@@ -1,2 +1,27 @@
 # Keycloak Deployment
-In previous steps we already created the volume in Longhorn, connected it to Kubernetes en create a secret in Kubernetes 
+In previous steps we already created the volume in Longhorn, connected it to Kubernetes.
+Created a new keycloak database in PostgreSQL and create a Kubernetes secret to login into this database and also with the keycloak admin.
+
+## Add the keycloak domain
+First we will change the CoreDNS file to add the keycloak domain. This file can be found under 03-Kubernetes/files
+```bash
+vi coredns-custom-depl.yaml
+```
+Change the following
+```yaml
+data:
+  Corefile: |
+    .:53 {
+      hosts {
+        192.168.50.210 kubedash.iot.keutgens.be
+        192.168.50.210 grafana.iot.keutgens.be
+        192.168.50.210 longhorn.iot.keutgens.be
+	      192.168.50.210 keycloak.iot.keutgens.be	   # <--- Add keycloak domain
+  fallthrough
+      }
+      forward . 8.8.8.8
+      log
+    }
+```
+
+
