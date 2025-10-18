@@ -1,0 +1,8 @@
+[recidive]
+enabled = true
+logpath = /var/log/fail2ban.log
+banaction = ufw
+backend = systemd
+maxretry = 5
+findtime = 1d
+bantime = 1w

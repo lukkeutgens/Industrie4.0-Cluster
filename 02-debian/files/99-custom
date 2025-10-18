@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+source /etc/os-release
+USER=$(logname)
+HOME=$(eval echo “~$USER”)
+echo -e "
+*************************************************************************
+*               KEUTGENS INDUSTRIiE 4.0 IOT-PLATFORM			
+*************************************************************************
+* Server 	: $(hostname).$(dnsdomainname)				
+* Role 		: $(cat /etc/server-description)			
+* IP-Address 	: $(hostname -I)					
+* Uptime 	: $(uptime -p)						
+* OS 		: $PRETTY_NAME						
+*									
+* You are logged in as 	: $USER						
+* In directory 	  	: $HOME						
+* 									
+*************************************************************************
+"

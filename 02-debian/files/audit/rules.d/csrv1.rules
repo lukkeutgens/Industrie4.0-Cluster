@@ -1,0 +1,32 @@
+# Monitor wijzigingen aan gebruikersbestanden
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/group -p wa -k identity
+
+# Monitor sudo-gebruik
+-w /usr/bin/sudo -p x -k sudo
+-w /etc/sudoers -p wa -k sudo
+
+# Monitor tijdsinstellingen
+-a always,exit -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k time-change
+
+# Monitor kernel module wijzigingen
+-a always,exit -F arch=b64 -S init_module -S delete_module -k modules
+
+# Monitor auditd zelf (bescherming tegen sabotage)
+-w /etc/audit/ -p wa -k auditconfig
+-w /var/log/audit/ -p wa -k auditlogs
+
+# Monitor SSH daemon socket
+-w /var/run/sshd -p rwxa -k sshd_socket
+
+# Monitor aanmaak van sessies (bijv. SSH login)
+-a always,exit -F arch=b64 -S pam_start -k ssh_session
+-a always,exit -F arch=b64 -S session -k ssh_session
+
+# Monitor commando-uitvoering via SSH (execve door root)
+-a always,exit -F arch=b64 -F euid=0 -S execve -k ssh_exec
+
+# Monitor wijzigingen aan SSH-configuratie
+-w /etc/ssh/sshd_config -p wa -k ssh_config
+

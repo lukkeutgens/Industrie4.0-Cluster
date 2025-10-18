@@ -1,0 +1,138 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  creationTimestamp: "2025-09-06T17:45:35Z"
+  finalizers:
+  - longhorn.io
+  generation: 2
+  name: wsrv3
+  namespace: longhorn-system
+  resourceVersion: "318670"
+  uid: 9253303a-e7d8-4906-86d7-91912b08c1a4
+spec:
+  allowScheduling: true
+  disks:
+    default-disk-4d1da2023cf680fc:
+      allowScheduling: true
+      diskDriver: ""
+      diskType: filesystem
+      evictionRequested: false
+      path: /var/lib/longhorn/
+      storageReserved: 14666242867
+      tags: []
+    disk-data:
+      allowScheduling: true
+      diskDriver: ""
+      diskType: filesystem
+      evictionRequested: false
+      path: /data
+      storageReserved: 5368709120
+      tags: []
+  evictionRequested: false
+  instanceManagerCPURequest: 0
+  name: wsrv3
+  tags: []
+status:
+  autoEvicting: false
+  conditions:
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-10-12T11:35:42Z"
+    message: Node wsrv3 is ready
+    reason: ""
+    status: "True"
+    type: Ready
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:45:35Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: Schedulable
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:45:35Z"
+    message: All required packages [dmsetup nfs-common open-iscsi cryptsetup] are
+      installed
+    reason: ""
+    status: "True"
+    type: RequiredPackages
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:45:35Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: Multipathd
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:45:35Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: NFSClientInstalled
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:45:35Z"
+    message: Kernel modules [dm_crypt] are loaded
+    reason: ""
+    status: "True"
+    type: KernelModulesLoaded
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T17:46:05Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: MountPropagation
+  diskStatus:
+    default-disk-4d1da2023cf680fc:
+      conditions:
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-06T17:46:05Z"
+        message: Disk default-disk-4d1da2023cf680fc(/var/lib/longhorn/) on node wsrv3
+          is ready
+        reason: ""
+        status: "True"
+        type: Ready
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-06T17:46:05Z"
+        message: Disk default-disk-4d1da2023cf680fc(/var/lib/longhorn/) on node wsrv3
+          is schedulable
+        reason: ""
+        status: "True"
+        type: Schedulable
+      diskDriver: ""
+      diskName: default-disk-4d1da2023cf680fc
+      diskPath: /var/lib/longhorn/
+      diskType: filesystem
+      diskUUID: 9826cc73-dff9-4a56-81c0-01f2a65824c1
+      filesystemType: ext2/ext3
+      instanceManagerName: instance-manager-206b43d6a750cb338d23bee600ac067a
+      scheduledBackingImage: {}
+      scheduledReplica: {}
+      storageAvailable: 37958451200
+      storageMaximum: 48887476224
+      storageScheduled: 0
+    disk-data:
+      conditions:
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-14T15:03:16Z"
+        message: Disk disk-data(/data) on node wsrv3 is ready
+        reason: ""
+        status: "True"
+        type: Ready
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-14T15:03:16Z"
+        message: Disk disk-data(/data) on node wsrv3 is schedulable
+        reason: ""
+        status: "True"
+        type: Schedulable
+      diskDriver: ""
+      diskName: disk-data
+      diskPath: /data
+      diskType: filesystem
+      diskUUID: 9f77734c-5add-4224-80e8-8ec1bd07a610
+      filesystemType: xfs
+      instanceManagerName: instance-manager-206b43d6a750cb338d23bee600ac067a
+      scheduledBackingImage: {}
+      scheduledReplica: {}
+      storageAvailable: 59454259200
+      storageMaximum: 59932409856
+      storageScheduled: 0
+  region: ""
+  snapshotCheckStatus: {}
+  zone: ""

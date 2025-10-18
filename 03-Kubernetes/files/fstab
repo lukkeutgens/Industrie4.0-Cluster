@@ -1,0 +1,16 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/mapper/LV_sys-LV_root /               ext4    errors=remount-ro 0       1
+/dev/mapper/LV_data-LV_data /data           xfs     defaults        0       0
+/dev/mapper/LV_data-LV_k8s /var/lib/k8s    xfs     defaults        0       0
+/dev/mapper/LV_data-LV_logs /var/log/containers xfs     defaults        0       0
+# /dev/mapper/LV_sys-LV_swap none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0

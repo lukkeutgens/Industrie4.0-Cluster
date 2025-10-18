@@ -1,0 +1,26 @@
+[DEFAULT]
+# Logging en database
+logtarget = /var/log/fail2ban.log
+dbpurgeage = 1d
+dbfile = /var/lib/fail2ban/fail2ban.sqlite3
+
+# Emailmelding bij ban
+sender = csrv1@iot.keutgens.be
+sendername = CSRV1 Fail2Ban Alert
+destemail = luk.keutgens@gmail.com
+action = %(action_mw)s
+mta = sendmail
+
+# UFW Firewall actie
+banaction = ufw
+banaction_allports = ufw
+
+[sshd]
+enabled  = true
+port     = 22348
+filter   = sshd
+backend  = systemd
+logpath  = _SYSTEMD_UNIT=ssh.service
+maxretry = 3
+bantime  = 1h
+findtime = 10m

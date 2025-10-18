@@ -1,0 +1,141 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  creationTimestamp: "2025-09-06T10:42:20Z"
+  finalizers:
+  - longhorn.io
+  generation: 5
+  name: csrv1
+  namespace: longhorn-system
+  resourceVersion: "318382"
+  uid: fd6b762b-8c4c-46d4-b60d-092819e94d1c
+spec:
+  allowScheduling: true
+  disks:
+    data-disk:
+      allowScheduling: true
+      diskDriver: ""
+      diskType: filesystem
+      evictionRequested: false
+      path: /data
+      storageReserved: 5368709120
+      tags:
+      - keycloak
+    default-disk-4d1da2023cf680fc:
+      allowScheduling: true
+      diskDriver: ""
+      diskType: filesystem
+      evictionRequested: false
+      path: /var/lib/longhorn/
+      storageReserved: 14666242867
+      tags: []
+  evictionRequested: false
+  instanceManagerCPURequest: 0
+  name: csrv1
+  tags:
+  - keycloak
+status:
+  autoEvicting: false
+  conditions:
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-10-12T11:35:33Z"
+    message: Node csrv1 is ready
+    reason: ""
+    status: "True"
+    type: Ready
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:20Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: Schedulable
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:20Z"
+    message: All required packages [nfs-common open-iscsi cryptsetup dmsetup] are
+      installed
+    reason: ""
+    status: "True"
+    type: RequiredPackages
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:20Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: Multipathd
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:20Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: NFSClientInstalled
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:20Z"
+    message: Kernel modules [dm_crypt] are loaded
+    reason: ""
+    status: "True"
+    type: KernelModulesLoaded
+  - lastProbeTime: ""
+    lastTransitionTime: "2025-09-06T10:42:50Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: MountPropagation
+  diskStatus:
+    data-disk:
+      conditions:
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-14T14:44:11Z"
+        message: Disk data-disk(/data) on node csrv1 is ready
+        reason: ""
+        status: "True"
+        type: Ready
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-14T14:44:11Z"
+        message: Disk data-disk(/data) on node csrv1 is schedulable
+        reason: ""
+        status: "True"
+        type: Schedulable
+      diskDriver: ""
+      diskName: data-disk
+      diskPath: /data
+      diskType: filesystem
+      diskUUID: 4ff4b0ca-d81b-408a-afda-7862bde4af93
+      filesystemType: xfs
+      instanceManagerName: instance-manager-8a30f651c2b174fcea082536d66035d6
+      scheduledBackingImage: {}
+      scheduledReplica:
+        keycloak-data-r-88aad05e: 1073741824
+      storageAvailable: 59454259200
+      storageMaximum: 59932409856
+      storageScheduled: 1073741824
+    default-disk-4d1da2023cf680fc:
+      conditions:
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-06T10:42:50Z"
+        message: Disk default-disk-4d1da2023cf680fc(/var/lib/longhorn/) on node csrv1
+          is ready
+        reason: ""
+        status: "True"
+        type: Ready
+      - lastProbeTime: ""
+        lastTransitionTime: "2025-09-06T10:42:50Z"
+        message: Disk default-disk-4d1da2023cf680fc(/var/lib/longhorn/) on node csrv1
+          is schedulable
+        reason: ""
+        status: "True"
+        type: Schedulable
+      diskDriver: ""
+      diskName: default-disk-4d1da2023cf680fc
+      diskPath: /var/lib/longhorn/
+      diskType: filesystem
+      diskUUID: fd7c82c2-26f0-45b4-b083-6468dbb99603
+      filesystemType: ext2/ext3
+      instanceManagerName: instance-manager-8a30f651c2b174fcea082536d66035d6
+      scheduledBackingImage: {}
+      scheduledReplica: {}
+      storageAvailable: 35651584000
+      storageMaximum: 48887476224
+      storageScheduled: 0
+  region: ""
+  snapshotCheckStatus: {}
+  zone: ""

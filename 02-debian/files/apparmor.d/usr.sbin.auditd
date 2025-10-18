@@ -1,0 +1,14 @@
+# Last Modified: Sat Jul 26 15:56:29 2025
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/sbin/auditd flags=(complain) {
+  include <abstractions/base>
+  include <abstractions/gstreamer>
+
+  /usr/sbin/auditd mr,
+  owner /etc/passwd r,
+  owner /var/log/audit/** rw,
+
+}

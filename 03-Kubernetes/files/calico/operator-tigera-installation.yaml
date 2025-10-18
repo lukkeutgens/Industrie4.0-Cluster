@@ -1,0 +1,69 @@
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"operator.tigera.io/v1","kind":"Installation","metadata":{"annotations":{},"name":"default"},"spec":{"calicoNetwork":{"ipPools":[{"blockSize":26,"cidr":"192.168.0.0/16","encapsulation":"VXLAN","name":"default-ipv4-ippool","natOutgoing":"Enabled","nodeSelector":"all()"}],"nodeAddressAutodetectionV4":{"interface":"enp0s3"}}}}
+  creationTimestamp: "2025-09-06T16:08:47Z"
+  finalizers:
+  - operator.tigera.io/installation-controller
+  - tigera.io/operator-cleanup
+  - operator.tigera.io/goldmane-controller
+  - operator.tigera.io/apiserver-controller
+  - operator.tigera.io/whisker-controller
+  generation: 5
+  name: default
+  resourceVersion: "96446"
+  uid: ec64d4b8-94f6-47e6-a483-9194ff3beb48
+spec:
+  calicoNetwork:
+    bgp: Disabled
+    hostPorts: Enabled
+    ipPools:
+    - allowedUses:
+      - Workload
+      - Tunnel
+      assignmentMode: Automatic
+      blockSize: 26
+      cidr: 192.168.0.0/16
+      disableBGPExport: false
+      disableNewAllocations: false
+      encapsulation: VXLAN
+      name: default-ipv4-ippool
+      natOutgoing: Enabled
+      nodeSelector: all()
+    linuxDataplane: Iptables
+    linuxPolicySetupTimeoutSeconds: 0
+    multiInterfaceMode: None
+    nodeAddressAutodetectionV4:
+      interface: enp0s3
+    windowsDataplane: Disabled
+  cni:
+    ipam:
+      type: Calico
+    type: Calico
+  controlPlaneReplicas: 2
+  flexVolumePath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec/
+  kubeletVolumePluginPath: /var/lib/kubelet
+  logging:
+    cni:
+      logFileMaxAgeDays: 30
+      logFileMaxCount: 10
+      logFileMaxSize: 100Mi
+      logSeverity: Info
+  nodeUpdateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  nonPrivileged: Disabled
+  variant: Calico
+status:
+  conditions:
+  - lastTransitionTime: "2025-09-06T17:50:02Z"
+    message: 'error migrating resources to calico-system: failed to wait for calico-node
+      daemonset to be ready: client rate limiter Wait returned an error: rate: Wait(n=1)
+      would exceed context deadline'
+    observedGeneration: 5
+    reason: ResourceMigrationError
+    status: "True"
+    type: Degraded

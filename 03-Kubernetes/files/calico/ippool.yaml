@@ -1,0 +1,42 @@
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  creationTimestamp: "2025-09-06T16:13:38Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: tigera-operator
+  managedFields:
+  - apiVersion: crd.projectcalico.org/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/managed-by: {}
+      f:spec:
+        .: {}
+        f:allowedUses: {}
+        f:assignmentMode: {}
+        f:blockSize: {}
+        f:cidr: {}
+        f:ipipMode: {}
+        f:natOutgoing: {}
+        f:nodeSelector: {}
+        f:vxlanMode: {}
+    manager: operator
+    operation: Update
+    time: "2025-09-06T16:13:38Z"
+  name: default-ipv4-ippool
+  resourceVersion: "92944"
+  uid: b7e9f935-e71e-4eb5-9b29-707ec6e17bfe
+spec:
+  allowedUses:
+  - Workload
+  - Tunnel
+  assignmentMode: Automatic
+  blockSize: 26
+  cidr: 192.168.0.0/16
+  ipipMode: Never
+  natOutgoing: true
+  nodeSelector: all()
+  vxlanMode: Always

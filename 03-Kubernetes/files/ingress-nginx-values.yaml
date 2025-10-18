@@ -1,0 +1,26 @@
+controller:
+  replicaCount: 2
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: true
+  service:
+    type: LoadBalancer
+    loadBalancerIP: 192.168.50.210
+  config:
+    use-forwarded-headers: "true"
+    proxy-body-size: "20m"
+    enable-real-ip: "true"
+  extraArgs:
+    enable-ssl-passthrough: "true"
+  metrics:
+    enabled: true
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  defaultBackend:
+    enabled: true
