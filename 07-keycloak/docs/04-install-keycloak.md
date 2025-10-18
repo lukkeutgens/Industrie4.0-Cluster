@@ -16,7 +16,7 @@ data:
         192.168.50.210 kubedash.iot.keutgens.be
         192.168.50.210 grafana.iot.keutgens.be
         192.168.50.210 longhorn.iot.keutgens.be
-	      192.168.50.210 keycloak.iot.keutgens.be	   # <--- Add keycloak domain
+		192.168.50.210 keycloak.iot.keutgens.be	   # <--- Add keycloak domain
   fallthrough
       }
       forward . 8.8.8.8
