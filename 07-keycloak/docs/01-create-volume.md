@@ -86,7 +86,6 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: longhorn
-  volumeName: keycloak-pv
 ```
 Apply the manifest:
 ```bash
