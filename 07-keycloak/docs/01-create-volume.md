@@ -6,7 +6,7 @@ We will create a Longhorn volume manually through the UI, ensuring it is placed 
 ## Longhorn Setup
 Configure the following settings in the Longhorn UI:
 
-1. Under **Nodes**, select the nodes you want to use and assign a **Node tag**: `keycloak`.
+1. Under `Nodes`, select the nodes you want to use and assign a **Node tag**: `keycloak`.
 2. For each selected node, choose the disk you want to use and assign a **Disk tag**: `keycloak`.
 3. Go to **Volumes** and create a new volume using the settings below
 
