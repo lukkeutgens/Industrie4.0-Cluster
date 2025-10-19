@@ -51,7 +51,7 @@ metadata:
   name: keycloak-pv
 spec:
   capacity:
-    storage: 1Gi
+    storage: 5Gi
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
@@ -84,7 +84,7 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi
   storageClassName: longhorn
   volumeName: keycloak-pv
 ```
