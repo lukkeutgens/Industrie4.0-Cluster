@@ -3,7 +3,7 @@ This document describes the setup for integrating Keycloak as the central Identi
 
 > ⚠️ Image Compatibility Notice:
 > We are using Keycloak version 22.0.5 because it supports the --auto-build flag.
-> Newer versions require a separate build step before running, but that approach failed during testing. Downgrading to 22.0.5 with --auto-build resolved the issue and is sufficient for this setup.
+> More about this in the install-keycloak.md
 ---
 
 ## Why Keycloak?
