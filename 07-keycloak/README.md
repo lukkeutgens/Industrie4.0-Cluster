@@ -45,12 +45,12 @@ Keycloak will be used to secure access to:
 ```text
 ├── docs
 │   ├── 01-create-volume.md        # Create PVC and PV via Longhorn UI for persistent Keycloak data
-│   ├── 02-create-database.md      # PostgreSQL setup: create DB and user for Keycloak
+│   ├── 02-create-database.md      # PostgreSQL setup: Create DB and user for Keycloak
 │   ├── 03-create-secret.md        # Define DB credentials as Kubernetes Secret for Keycloak
-│   ├── 04-create-cert.md          # Generate TLS certificate via cert-manager for HTTPS
-│   ├── 05-create-ingress.md       # Configure Ingress to expose Keycloak over HTTPS
-│   ├── 06-create-service.md       # Internal ClusterIP service to route traffic to Keycloak pod
-│   ├── 07-install-keycloak.md     # Deploy Keycloak container with auto-build and DB integration
+│   ├── 04-create-cert.md          # Generate TLS certificate via cert-manager
+│   ├── 05-create-ingress.md       # Configure Ingress to expose Keycloak
+│   ├── 06-create-service.md       # Internal ClusterIP service to route traffic
+│   ├── 07-install-keycloak.md     # Deploy Keycloak container with auto-build
 │   └── 08-debugging-help.md       # Troubleshooting help
 ├── files
 │   ├── keycloak-cert.yaml         # TLS certificate resource
