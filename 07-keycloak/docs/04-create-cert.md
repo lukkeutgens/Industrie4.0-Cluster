@@ -1,5 +1,5 @@
 # TLS Certificate for Keycloak via cert-manager
-To enable HTTPS for Keycloak, create a TLS certificate using cert-manager and a `ClusterIssuer`, which we already have setup.
+To enable HTTPS for Keycloak, create a TLS certificate using cert-manager and a `ClusterIssuer`, which has already been set up.
 
 Create file:
 ```bash
