@@ -1,7 +1,7 @@
 # Keycloak Ingress Configuration
 This Ingress resource exposes Keycloak over HTTPS using NGINX Ingress Controller already active in our cluster. It routes traffic for `keycloak.iot.keutgens.be` to the internal Keycloak service.
 
-Create file:
+## 1. Create ingress file:
 ```bash
 vi keycloak-ingress.yaml
 ```
@@ -36,7 +36,7 @@ spec:
 - TLS is enabled via the keycloak-tls secret, which must be created by cert-manager (see keycloak-cert.yaml).
 - The backend service keycloak-service must be running and reachable on port 8080.
 
-Apply the Ingress:
+## 2. Apply the Ingress:
 ```bash
 kubectl apply -f keycloak-ingress.yaml
 ```
