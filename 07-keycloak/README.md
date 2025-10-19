@@ -1,9 +1,8 @@
 # Keycloak Central Identity and Access Management (IAM)
 This document describes the setup for integrating Keycloak as the central Identity and Access Management (IAM) solution within the Kubernetes cluster. Keycloak will be deployed as a containerized service and connected to the existing PostgreSQL database, which is already running as a StatefulSet backed by Longhorn volumes.
 
-> ⚠️ Image Compatibility Notice:
-> We are using Keycloak version 22.0.5 because it supports the --auto-build flag.
-> More about this in the install-keycloak.md
+> ⚠️ Image Compatibility Notice We are using Keycloak version 22.0.5 because it supports the --auto-build flag. Newer versions require a separate build step, which failed during testing. See install-keycloak.md for details.
+
 ---
 
 ## Why Keycloak?
