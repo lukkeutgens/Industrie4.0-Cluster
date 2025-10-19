@@ -139,6 +139,26 @@ Apply the deployment:
 ```bash
 kubectl apply -f keycloak-deploy.yaml
 ```
+> ⚠️ It can take a very long time (minutes) before keycloak is fully running and ready.
 
 
+---
+
+## Additional Explanation
+### Database configuration
+Keycloak connects to an external PostgreSQL database using the following environment variables:
+```yaml
+KC_DB: postgres
+KC_DB_URL_HOST: timescaledb.postgresql.svc.cluster.local
+KC_DB_URL_DATABASE: keycloak
+KC_DB_URL_PORT: "5432"
+```
+Make sure the database keycloak exists and is owned by the user keycloak. See postgres-setup.md for details.
+
+### Health Probes
+Keycloak exposes health endpoints for Kubernetes probes:
+- Readiness Probe: /health/ready Ensures the pod is ready to receive traffic. Includes a Host header to match Keycloak’s configured hostname.
+- Liveness Probe: /health/live Ensures the pod is still alive and responsive.
+
+These probes were manually validated using curl from a test pod. See probe-validation.md for details.
 
