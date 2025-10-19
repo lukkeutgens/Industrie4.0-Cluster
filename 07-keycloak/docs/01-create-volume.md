@@ -15,7 +15,7 @@ Make the following changes through the Longhorn-UI
 | Setting                  | Value            | Description                                                       |
 | :---                     | :---             | :---                                                              |
 | **Name**                 | `keycloak-data`   | Unique name for the volume                                        |
-| **Size**                 | `1Gi`            | Logical size of the volume                                        |
+| **Size**                 | `5Gi`            | Logical size of the volume                                        |
 | **Number of replicas**   | `2`              | Number of data replicas across nodes for high availability        |
 | **Data engine**          | `v1`             | Default engine; supports snapshots and backups                    |
 | **Frontend**             | `Block device`   | Exposes volume as a block device to the pod                       |
