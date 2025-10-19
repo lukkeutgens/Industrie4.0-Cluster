@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:26.4.0
+          command: ["/opt/keycloak/bin/kc.sh"]
+          args: ["build"]
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: keycloak-secret
+          env:
+            - name: KC_DB
+              value: postgres
+            - name: KC_DB_URL_HOST
+              value: timescaledb.postgresql.svc.cluster.local
+            - name: KC_DB_URL_DATABASE
+              value: keycloak
+            - name: KC_DB_URL_PORT
+              value: "5432"
+            - name: KC_HTTP_RELATIVE_PATH
+              value: /
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: KC_PROXY
+              value: edge
+            - name: KC_PROXY_ADDRESS_FORWARDING
+              value: "true"
+            - name: KC_HOSTNAME
+              value: keycloak.iot.keutgens.be
+            - name: KC_HOSTNAME_STRICT
+              value: "false"
+          volumeMounts:
+            - name: keycloak-data
+              mountPath: /opt/keycloak/data
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+      volumes:
+        - name: keycloak-data
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
+
