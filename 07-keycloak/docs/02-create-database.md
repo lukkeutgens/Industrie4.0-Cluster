@@ -8,7 +8,7 @@ kubectl exec -it timescaledb-0 -n postgresql -- bash
 ```
 
 ## 2. Log in to PostgreSQL
-Use the credentials defined in your Kubernetes Secret:
+Use the database admin credentials stored in your Kubernetes Secret:
 ```bash
 psql -U iotadmin -d postgres
 ```
@@ -39,7 +39,7 @@ exit
 
 ---
 
-The database is now up and running in PostgreSQL to accept data comming from Keycloak
+The database is now up and running in PostgreSQL to accept data coming from Keycloak
 
 
 
