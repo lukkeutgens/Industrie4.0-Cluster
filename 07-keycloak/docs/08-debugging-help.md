@@ -40,7 +40,7 @@ kubectl apply -f keycloak-deploy.yaml
 ---
 
 ## Live Pod Inspection
-Starting the Keycloak deployment takes a lot off time. You can check the logs while it is starting the pod and the steps it is taking.
+Keycloak startup can take several minutes. Use the following commands to monitor progress.
 
 First get the actual pod-name:
 ```bash
