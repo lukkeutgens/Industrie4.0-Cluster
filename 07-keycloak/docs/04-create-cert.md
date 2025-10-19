@@ -1,6 +1,7 @@
-# Keycloak Certificate
-Create a certificate with cert-manager for Keycloak
+# TLS Certificate for Keycloak via cert-manager
+To enable HTTPS for Keycloak, create a TLS certificate using cert-manager and a `ClusterIssuer`, which we already have setup.
 
+Create file:
 ```bash
 vi keycloak-cert.yaml
 ```
@@ -25,4 +26,10 @@ spec:
 Apply the file:
 ```bash
 kubectl apply -f keycloak-cert.yaml
+```
+The certificate will be stored as a Kubernetes TLS secret named keycloak-tls in the keycloak namespace.
+
+Make sure the ClusterIssuer named selfsigned-cluster-issuer already exists. You can verify this with:
+```bash
+kubectl get clusterissuer
 ```
