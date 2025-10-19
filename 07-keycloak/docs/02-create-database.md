@@ -19,8 +19,8 @@ postgres=#
 
 ## 3. Create the Keycloak database and user
 ```sql
-CREATE DATABASE keycloak;
 CREATE USER keycloak_user WITH PASSWORD '********';
+CREATE DATABASE keycloak OWNER keycloak_user;
 GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak_user;
 ```
 
