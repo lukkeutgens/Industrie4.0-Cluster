@@ -1,7 +1,8 @@
 # Keycloak Ingress Configuration
-This Ingress resource exposes Keycloak over HTTPS using NGINX Ingress Controller already active in our cluster. It routes traffic for `keycloak.iot.keutgens.be` to the internal Keycloak service.
+This Ingress resource exposes Keycloak over HTTPS using NGINX Ingress Controller already active in the cluster. It routes traffic for `keycloak.iot.keutgens.be` to the internal Keycloak service.
 
-## 1. Create ingress file:
+## 1. Create the Ingress file
+Create the file: 
 ```bash
 vi keycloak-ingress.yaml
 ```
