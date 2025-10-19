@@ -44,21 +44,21 @@ Keycloak will be used to secure access to:
 ## Folder Content
 ```text
 ├── docs
-│   ├── 01-create-volume.md
-│   ├── 02-create-database.md
-│   ├── 03-create-secret.md
-│   ├── 04-create-cert.md
-│   ├── 05-create-ingress.md
-│   ├── 06-create-service.md
-│   ├── 07-install-keycloak.md
-│   └── 08-debugging-help.md
+│   ├── 01-create-volume.md        # Create PVC and PV via Longhorn UI for persistent Keycloak data
+│   ├── 02-create-database.md      # PostgreSQL setup: create DB and user for Keycloak
+│   ├── 03-create-secret.md        # Define DB credentials as Kubernetes Secret for Keycloak
+│   ├── 04-create-cert.md          # Generate TLS certificate via cert-manager for HTTPS
+│   ├── 05-create-ingress.md       # Configure Ingress to expose Keycloak over HTTPS
+│   ├── 06-create-service.md       # Internal ClusterIP service to route traffic to Keycloak pod
+│   ├── 07-install-keycloak.md     # Deploy Keycloak container with auto-build and DB integration
+│   └── 08-debugging-help.md       # Troubleshooting help
 ├── files
-│   ├── keycloak-cert.yaml
-│   ├── keycloak-deploy.yaml
-│   ├── keycloak-ingress.yaml
-│   ├── keycloak-pvc.yaml
-│   ├── keycloak-pv.yaml
-│   ├── keycloak-secret.yaml
-│   └── keycloak-service.yaml
-└── README.md
+│   ├── keycloak-cert.yaml         # TLS certificate resource
+│   ├── keycloak-deploy.yaml       # Keycloak Deployment
+│   ├── keycloak-ingress.yaml      # Ingress resource
+│   ├── keycloak-pvc.yaml          # PersistentVolumeClaim
+│   ├── keycloak-pv.yaml           # PersistentVolume definition (Longhorn-backed)
+│   ├── keycloak-secret.yaml       # Secret containing DB credentials for Keycloak
+│   └── keycloak-service.yaml      # ClusterIP service
+└── README.md                      # This file
 ```
