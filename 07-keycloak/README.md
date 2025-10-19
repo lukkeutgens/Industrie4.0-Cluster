@@ -41,5 +41,22 @@ Keycloak will be used to secure access to:
 
 ## Folder Content
 ```text
-To be added
+├── docs
+│   ├── 01-create-volume.md
+│   ├── 02-create-database.md
+│   ├── 03-create-secret.md
+│   ├── 04-create-cert.md
+│   ├── 05-create-ingress.md
+│   ├── 06-create-service.md
+│   ├── 07-install-keycloak.md
+│   └── 08-debugging-help.md
+├── files
+│   ├── keycloak-cert.yaml
+│   ├── keycloak-deploy.yaml
+│   ├── keycloak-ingress.yaml
+│   ├── keycloak-pvc.yaml
+│   ├── keycloak-pv.yaml
+│   ├── keycloak-secret.yaml
+│   └── keycloak-service.yaml
+└── README.md
 ```
