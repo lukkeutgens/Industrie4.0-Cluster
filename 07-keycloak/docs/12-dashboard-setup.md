@@ -96,6 +96,18 @@ Settings for a user:
 
 ---
 
+## 4. Create the OIDC Client in Keycloak
+To enable secure login from the Kubernetes Dashboard using Keycloak, we need to configure Keycloak as an OIDC identity provider. This is done by creating a client in Keycloak that represents the Kubernetes Dashboard as a trusted application.
+
+### What is an OIDC Client?
+An OIDC client in Keycloak defines:
+- Who is allowed to authenticate (users/groups)
+- Which application is requesting authentication (in this case, the Kubernetes Dashboard)
+- How tokens are issued and validated
+- Which claims (like groups, email, username) are included in the token
+
+This client acts as the bridge between Keycloak and Kubernetes Dashboard, allowing users to log in using their Keycloak credentials and receive a token that Kubernetes can validate and use for RBAC.
+
 
 
 
