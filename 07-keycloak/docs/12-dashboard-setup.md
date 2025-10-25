@@ -39,6 +39,16 @@ Note that the k8s-settings role targets a different set of resources than the k8
 In Keycloak, we assign both roles (k8s-viewer and k8s-settings) to the k8s-settings group. This means users in that group can view all workloads and cluster activity via the k8s-viewer role, and additionally manage specific settings like configmaps, secrets, and ingresses via the k8s-settings role.
 
 ### Admin role:
-- **Role name** : k8s-settings
-- **Description** : Limited access to dashboard settings
-- **Attributes** : 
+- **Role name** : k8s-admin
+- **Description** : Full administrative access to all Kubernetes resources and actions
+- **Attributes** :
+
+| key          | Value              |
+| :---         | :---               |
+| apiGroups    | ["*"]  |
+| resources    | ["*"]  |
+| verbs        | ["*"]  |
+| description  | Limited access to dashboard settings | 
+
+The k8s-admin role is granted full access to all Kubernetes resources and actions. This is achieved by using the wildcard * for apiGroups, resources, and verbs.
+
