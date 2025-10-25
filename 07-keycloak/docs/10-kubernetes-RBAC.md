@@ -8,7 +8,7 @@ This setup secures access to the Kubernetes Dashboard using Keycloak as an ident
 ## Login Flow Overview
 1. **User opens the Dashboard URL**: Example: `https://dashboard.iot.keutgens.be`
 2. **Dashboard redirects to Keycloak**: The user is sent to Keycloak to authenticate via username/password or other login methods.
-3. **Keycloak issues an OIDC token**: After successful login, Keycloak returns a JWT token containing user identity and group claims (e.g. groups: ["k8s-dashboard-viewers"]).
+3. **Keycloak issues an OIDC token**: After successful login, Keycloak returns a JWT-token (JSON Web Token) containing user identity and group claims (e.g. groups: ["k8s-dashboard-viewers"]).
 4. **Dashboard forwards the token to Kubernetes API**: The token is used to authenticate the user against the Kubernetes cluster.
 5. **Kubernetes RBAC evaluates the token Kubernetes**: Checks the groups claim in the token and applies RBAC rules defined via ClusterRoleBinding.
 
