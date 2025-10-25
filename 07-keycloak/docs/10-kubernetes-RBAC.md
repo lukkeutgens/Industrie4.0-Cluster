@@ -26,7 +26,7 @@ To enable login via Keycloak, the Kubernetes Dashboard must be configured to use
 ### Where to configure it
 You configure this in the Deployment manifest of the Kubernetes Dashboard — typically found in a file like dashboard.yaml or managed via Helm.
 
-Inside the container spec, you add the following args: section:
+Inside the container spec, you add the following arguments:
 ```yaml
 containers:
   - name: kubernetes-dashboard
