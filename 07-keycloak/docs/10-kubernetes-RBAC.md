@@ -21,7 +21,7 @@ This setup secures access to the Kubernetes Dashboard using Keycloak as an ident
 ---
 
 ## How Kubernetes Dashboard Connects to Keycloak (OIDC)
-To enable login via Keycloak, the Kubernetes Dashboard must be configured to use OIDC authentication. This is done by passing specific flags to the Dashboard container at deployment time.
+To enable login via Keycloak, the Kubernetes Dashboard must be configured to use OIDC authentication (OpenID Connect). This is done by passing specific flags to the Dashboard container at deployment time.
 
 ### Where to configure it
 You configure this in the Deployment manifest of the Kubernetes Dashboard — typically found in a file like dashboard.yaml or managed via Helm.
