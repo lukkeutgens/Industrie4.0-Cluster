@@ -8,12 +8,15 @@ I will create the Roles, Groups and Users that will be allowed to login on the d
 ---
 
 ## 1. Create Keycloak Realm Roles
-Viewer role:
+### Viewer role:
 - **Role name** : k8s-viewer
 - **Description** : Read-only access to Kubernetes Dashboard
-- Attributes:
+- **Attributes** :
+
 | key        | Value              |
 | :---       | :---               |
 | apiGroups  | ["", "apps", "batch", "networking.k8s.io"]  |
 | resources  | ["pods", "services", "events", "deployments", "replicasets", "statefulsets", "jobs", "cronjobs", "ingresses"]  |
 | verbs      | ["get", "list", "watch"]  |
+
+The viewer role receives access to specific Kubernetes resources because the Dashboard displays information derived from those resources. Without read permissions (get, list, watch) on these resources, the Dashboard would not be able to render their content, resulting in missing sections or access denied errors.
