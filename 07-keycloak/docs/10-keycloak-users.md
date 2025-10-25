@@ -12,6 +12,12 @@ This guide explains how to create and configure users in the `iotcluster` realm 
 
 ---
 
+## User Group
+Let's create the user groups
+
+
+---
+
 ## Create a user
 Field	Description	Recommended Input:
 | Field                  | Input            | Description       |
