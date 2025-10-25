@@ -3,6 +3,17 @@ This guide explains how to create and configure users in the `iotcluster` realm 
 
 ---
 
+## Realm Roles
+We need to create Realm Roles that we can link with the user groups. These roles will define what a user can do or not do.
+
+| Role Name      | Description            | Recomended User   |
+| :---           | :---                   | :---              |
+| default-roles-iot-cluster | This role serves as a container for both realm and client default roles. It cannot be removed. (default Keycloak) |   |
+| offline_access  | Allows clients to request refresh tokens that remain valid when the user is offline. Useful for background tasks or long-lived sessions. (default Keycloak) | Recommended for Kubernetes Dashboard if you want persistent sessions without re-login. |
+| uma_authorization | Enables the User-Managed Access (UMA) protocol. Lets users share access to their resources via OAuth2. (default Keycloak) | Rarely needed in standard cluster setups. Disable unless explicitly required. | 
+
+
+
 ## User Overview
 | Username     | Display Name   | Role in Keycloak | Role in Kubernetes Dashboard | 2FA   | Notes                 |
 | :---         | :---           | :---             | :---                         | :---  | :---         |
