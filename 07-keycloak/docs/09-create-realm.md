@@ -1,9 +1,9 @@
-# Setup Keycloak Realm
-Login on the Keycloak Administration Console.
-In my case this is on `https://keycloak.iot.keutgens.be/` (only running in my LAN).
-You will see the following items:
+# Creating a Keycloak Realm for IoT Cluster
+This guide explains how to manually create a new Keycloak realm for your Industrie4.0 Kubernetes cluster. The realm will be used to authenticate users for services like the Kubernetes Dashboard via OIDC and 2FA.
 
-## Manage Section
+## Accessing the Keycloak Admin Console
+Log in to the Keycloak Administration Console. In our setup, this is available at: `https://keycloak.iot.keutgens.be` (only LAN in my case)
+
 | Section         | Description              | 
 | :---            | :---                     |
 | Master (Realm)  | Default realm used to manage Keycloak itself. Contains admin users and system-level configuration. |
@@ -25,17 +25,22 @@ You will see the following items:
 
 ---
 
-## 1. Create a new Realm
-When you first login, you will be in the `master` Realm. When you click on that name there is the option to make a new one, so let's do this.
-- **Resource file** : To import an earlier made Realm, not needed in our case
-- **Realm name** : The name for our new Realm. In my case this will be `iotcluster`
-- **Enabled** : Needs to `On` off course.
-Click on `Create`
+## 1. Creating a New Realm
+After logging in, you will start in the `master` realm. To create a new realm:
+1. Click the realm name in the top-left corner.
+2. Select **Create Realm**.
+
+You will see the following options:
+
+- **Resource file**: Optional. Used to import a previously exported realm configuration. Leave empty for manual setup.
+- **Realm name**: Set to `iotcluster`
+- **Enabled**: Toggle to `On`
+Click **Create** to proceed.
 
 ---
 
-## 2. Edit Realm Settings
-After creating the Realm we can further edit the settings to make it more complete.
+## 2. Realm Settings Configuration
+Once the realm is created, configure its settings to match the cluster architecture and security requirements.
 
 | Setting               | Description              | 
 | :---                  | :---                     |
@@ -48,13 +53,15 @@ After creating the Realm we can further edit the settings to make it more comple
 | User-Managed Access   | Enables UMA protocol for user-controlled resource sharing. Rarely used unless integrating with OAuth2 resource servers. | 
 | Endpoints             | Shows all available endpoints for the realm (e.g., token, userinfo, certs). Useful for debugging and integration. |
 
-Our settings:
+### Recommended Settings
 - **Realm ID** : iotcluster
 - **Display Name** : IoT-Cluster
 - **HTML Display name** : <strong>IoT Cluster Login</strong>
 - **Frontend URL** : https://keycloak.iot.keutgens.be
 - **Require SSL** : All requests
-The rest we will live unchanged.
+
+Leave other settings unchanged unless you have specific requirements.
+
 
 
 
