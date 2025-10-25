@@ -76,8 +76,8 @@ subjects:
 --- 
 
 ## 3. Create Keycloak Users
-Now I create 3x users. One as admin, the other for the settings and the last one as viewer only.
-> When using `Child Groups` you will have to go to that group itself to assign users to it. It's not possible in the **User edit** page to assing that user to a child group, there you can only select the Main Groups.
+We will now create three users: one for admin access, one for settings management, and one with viewer-only access.
+> ⚠️ When using **child groups**, you must assign users directly from the child group page in Keycloak. It is not possible to assign a user to a child group from the user edit screen — there you can only select top-level groups.
 
 | User      | User Group                |   Roles (auto from group)  |
 | :---      | :---                      | :---        |
@@ -86,14 +86,13 @@ Now I create 3x users. One as admin, the other for the settings and the last one
 | leen      | `k8s-dashboard/viewers`   | `k8s-viewer`  | 
 
 Settings for a user:
-- **Username**: The login name for that user (no capital letters)
-- **Required user actions**: Select what a user should do when he logs in the first time.
-- **Email**: Give the user an email
-- **Email verified**: If not then the user needs to verify it when he logs in
-- **First name**: Real first name for user
-- **Last name**: Real last name for user
-- **Credentials**: In this tab you can setup a password
-- **Groups**: In this tab you can assign main groups, not child groups. We have used child groups so we can not add the user to the groups here.
+- **Username**: The login name for the user (use lowercase, no spaces)
+- **Required user actions**: Define what the user must do on first login (e.g., update password)
+- **Email**: Assign a valid email address
+- **Email verified**: If unchecked, the user will be prompted to verify their email on login
+- **First / Last name**: Real names for identification
+- **Credentials Tab**: Set the initial password
+- **Groups Tab**: Only top-level groups are visible here — child groups must be assigned from the group view
 
 ---
 
