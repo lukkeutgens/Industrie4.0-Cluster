@@ -3,7 +3,7 @@ This guide explains how to create and configure users in the `iotcluster` realm 
 
 ---
 
-## Realm Roles
+## 1. Realm Roles
 We need to create Realm Roles that we can link with the user groups. These roles will define what a user can do or not do.
 
 ### Default Keycloak Roles
@@ -26,6 +26,14 @@ We need to create Realm Roles that we can link with the user groups. These roles
 | keycloak-usermanager | Manage users only, no access to groups or realm settings |
 | keycloak-viewer | View-only access to users and realm settings |
 
+---
+
+## User Group
+Let's create the user groups
+
+
+
+---
 
 ## User Overview
 | Username     | Display Name   | Role in Keycloak | Role in Kubernetes Dashboard | 2FA   | Notes                 |
@@ -33,12 +41,6 @@ We need to create Realm Roles that we can link with the user groups. These roles
 | `iotadmin`   | –              | Realm Admin      | Cluster Admin                | ✅    | Created via Kubernetes secret |
 | `luk`        | Luk Keutgens   | None             | Cluster Admin                | ✅    | No access to Keycloak admin |
 | `leen`       | Leen Sels      | None             | Read-only                    | ✅    |  Read-only  |
-
----
-
-## User Group
-Let's create the user groups
-
 
 ---
 
