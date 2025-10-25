@@ -11,6 +11,8 @@ In my case I'm going to keep it simple.
 We need to create Realm Roles that we can link with the user groups. These roles will define what a user can do or not do.
 
 ### Default Keycloak Roles
+These roles are standard created by Keycloak itself.
+
 | Role Name      | Description            | Recomended Use    |
 | :---           | :---                   | :---              |
 | default-roles-iot-cluster | This role serves as a container for both realm and client default roles. It cannot be removed. (default Keycloak) |   |
@@ -18,6 +20,8 @@ We need to create Realm Roles that we can link with the user groups. These roles
 | uma_authorization | Enables the User-Managed Access (UMA) protocol. Lets users share access to their resources via OAuth2. (default Keycloak) | Rarely needed in standard cluster setups. Disable unless explicitly required. | 
 
 ### Custom Created Roles
+These are our custom created roles. At this point I'm not yet adding attributes to them.
+
 | Role Name      | Description                           |
 | :---           | :---                                  |
 | k8s-admin      | Full access to Kubernetes (Dashboard) |
@@ -35,6 +39,8 @@ We need to create Realm Roles that we can link with the user groups. These roles
 ## 2. User Group
 Now that we have defined the roles what a user can do, we can group these roles into user groups. Later we will assign the users to one or multiple groups.
 
+| Group Name      | Assigned Roles                      |
+| :---            | :---                                |
 
 
 ---
