@@ -20,6 +20,49 @@ This setup secures access to the Kubernetes Dashboard using Keycloak as an ident
 
 ---
 
+## How Kubernetes Dashboard Connects to Keycloak (OIDC)
+To enable login via Keycloak, the Kubernetes Dashboard must be configured to use OIDC authentication. This is done by passing specific flags to the Dashboard container at deployment time.
+
+### Where to configure it
+You configure this in the Deployment manifest of the Kubernetes Dashboard — typically found in a file like dashboard.yaml or managed via Helm.
+
+Inside the container spec, you add the following args: section:
+```yaml
+containers:
+  - name: kubernetes-dashboard
+    image: kubernetesui/dashboard:v2.7.0
+    args:
+      - --enable-insecure-login
+      - --authentication-mode=oidc
+      - --oidc-issuer-url=https://keycloak.iot.keutgens.be/realms/iotcluster
+      - --oidc-client-id=kubernetes-dashboard
+      - --oidc-skip-verify-cert=true
+      - --oidc-groups-claim=groups
+      - --oidc-username-claim=email
+```
+Replace `https://keycloak.iot.keutgens.be/realms/iotcluster` with your actual Keycloak realm URL.
+
+### Explanation of Key Flags
+
+| Flag	                      | Description  |
+| :---                        | :---          | 
+| --authentication-mode=oidc	| Enables OIDC login flow |
+| --oidc-issuer-url	          | Points to your Keycloak realm |
+| --oidc-client-id	          | Must match the client ID configured in Keycloak |
+| --oidc-groups-claim	        | Tells Dashboard which claim contains group info (used for RBAC) |
+| --oidc-username-claim	      | Which claim to use as the username (e.g. email or preferred_username) |
+| --oidc-skip-verify-cert	    | Skips TLS verification (only for testing; use with caution) |
+
+### What happens after configuration
+Once these flags are set:
+- The Dashboard shows a “Sign in with OpenID Connect” button
+- Clicking it redirects the user to Keycloak
+- After login, Keycloak returns a JWT token
+- The Dashboard forwards this token to the Kubernetes API
+- Kubernetes RBAC uses the groups claim to authorize access
+
+---
+
 ## Roles and Bindings in Kubernetes
 Kubernetes does not provide built-in roles like “admin” or “viewer” for the Dashboard. Instead, access is controlled via RBAC (Role-Based Access Control) using custom-defined roles and bindings.
 
