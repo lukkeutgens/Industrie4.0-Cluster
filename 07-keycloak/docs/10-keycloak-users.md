@@ -1,6 +1,10 @@
 # Creating Users and Roles in Keycloak
 This guide explains how to create and configure users in the `iotcluster` realm to authenticate with the Kubernetes Dashboard via Keycloak and OIDC. It includes an admin user (`iotadmin`), a technical user (`luk`), and a read-only user (`leen`).
 
+In Keycloak we create `Realm Roles` which will define what at the end a user can do, or not do. The users are assigned to one or more `Groups` and these groups are assigned the `Realm Roles`. This way we can setup a powerfull access management, but it also will be necesary to create a logical setup, to keep a good overview.
+
+In my case I'm going to keep it simple.
+
 ---
 
 ## 1. Realm Roles
@@ -28,8 +32,8 @@ We need to create Realm Roles that we can link with the user groups. These roles
 
 ---
 
-## User Group
-Let's create the user groups
+## 2. User Group
+Now that we have defined the roles what a user can do, we can group these roles into user groups. Later we will assign the users to one or multiple groups.
 
 
 
