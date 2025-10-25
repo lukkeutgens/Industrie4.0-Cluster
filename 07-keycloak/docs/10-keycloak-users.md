@@ -6,12 +6,25 @@ This guide explains how to create and configure users in the `iotcluster` realm 
 ## Realm Roles
 We need to create Realm Roles that we can link with the user groups. These roles will define what a user can do or not do.
 
-| Role Name      | Description            | Recomended User   |
+### Default Keycloak Roles
+| Role Name      | Description            | Recomended Use    |
 | :---           | :---                   | :---              |
 | default-roles-iot-cluster | This role serves as a container for both realm and client default roles. It cannot be removed. (default Keycloak) |   |
 | offline_access  | Allows clients to request refresh tokens that remain valid when the user is offline. Useful for background tasks or long-lived sessions. (default Keycloak) | Recommended for Kubernetes Dashboard if you want persistent sessions without re-login. |
 | uma_authorization | Enables the User-Managed Access (UMA) protocol. Lets users share access to their resources via OAuth2. (default Keycloak) | Rarely needed in standard cluster setups. Disable unless explicitly required. | 
 
+### Custom Created Roles
+| Role Name      | Description                           |
+| :---           | :---                                  |
+| k8s-admin      | Full access to Kubernetes (Dashboard) |
+| k8s-settings   | Limited access to dashboard settings  |
+| k8s-viewer     | Read-only access to Kubernetes Dashboard |
+| longhorn-admin  | Full control over Longhorn volumes and settings  |
+| longhorn-settings  | Access to Longhorn settings, no destructive actions |
+| longhorn-viewer | Read-only access to Longhorn UI | 
+| keycloak-admin | Full realm administration (can be replaced with built-in admin role) |
+| keycloak-usermanager | Manage users only, no access to groups or realm settings |
+| keycloak-viewer | View-only access to users and realm settings |
 
 
 ## User Overview
