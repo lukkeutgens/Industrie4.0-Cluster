@@ -48,6 +48,14 @@ After creating the Realm we can further edit the settings to make it more comple
 | User-Managed Access   | Enables UMA protocol for user-controlled resource sharing. Rarely used unless integrating with OAuth2 resource servers. | 
 | Endpoints             | Shows all available endpoints for the realm (e.g., token, userinfo, certs). Useful for debugging and integration. |
 
+Our settings:
+- **Realm ID** : iotcluster
+- **Display Name** : IoT-Cluster
+- **HTML Display name** : <strong>IoT Cluster Login</strong>
+- **Frontend URL** : https://keycloak.iot.keutgens.be
+- **Require SSL** : All requests
+The rest we will live unchanged.
+
 
 
 
