@@ -63,4 +63,14 @@ Now we will create the user groups that can access the Kubernetes-dashboard and 
 | k8s-dashboard   | settings    | `k8s-viewer`, `k8s-settings` |
 | k8s-dashboard   | admins      | `k8s-admin` |
 
+The rolebinding in Kubernetes will need to reflect this group/subgroup. For example:
+```yaml
+subjects:
+  - kind: Group
+    name: /k8s-dasbboard/viewer
+    apiGroup: rbac.authorization.k8s.io
+```
+
+--- 
+
 
