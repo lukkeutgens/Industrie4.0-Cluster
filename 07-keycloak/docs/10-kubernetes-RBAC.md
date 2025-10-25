@@ -17,6 +17,7 @@ This setup secures access to the Kubernetes Dashboard using Keycloak as an ident
 ## How Keycloak and Kubernetes RBAC Work Together
 - **Keycloak handles authentication**: It verifies the user's identity and provides group membership via token claims.
 - **Kubernetes handles authorization**: It uses RBAC to decide what each group can do (e.g. view-only, settings access, full admin).
+- **OpenID Connect (OIDC) Client**: The Keycloak OIDC Client will be linked up with Kubernetes. This tells Kubernetes that Keycloak is the OIDC identity provider.
 
 ---
 
