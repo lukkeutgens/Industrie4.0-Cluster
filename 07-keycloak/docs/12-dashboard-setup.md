@@ -50,5 +50,5 @@ In Keycloak, we assign both roles (k8s-viewer and k8s-settings) to the k8s-setti
 | verbs        | ["*"]  |
 | description  | Limited access to dashboard settings | 
 
-The k8s-admin role is granted full access to all Kubernetes resources and actions. This is achieved by using the wildcard * for apiGroups, resources, and verbs.
+The k8s-admin role is granted full access to all Kubernetes resources and actions. This is achieved by using the wildcard * for apiGroups, resources, and verbs. In contrast, we avoid using wildcards in the k8s-viewer role to prevent exposing sensitive resources such as secrets and other critical configuration data.
 
