@@ -1,9 +1,9 @@
 # Kubernetes-Dashboard Login Setup
-> Please read also `10-kubernetes-RBAC` to get a better understanding of what we are going to setup!
+> Please read also `10-kubernetes-RBAC` to better understand the setup we're implementing.
 
-In this document I will be using Keycloak to create a secure login with OpenID Connect (OIDC) to login to Kuberetes-Dashboard.
+This document describes how to use Keycloak to enable secure login via OpenID Connect (OIDC) for the Kubernetes Dashboard.
 
-I will create the Roles, Groups and Users that will be allowed to login on the dashboard with different rights.
+We will define Roles, Groups, and Users in Keycloak to control access levels within the dashboard.
 
 ---
 
@@ -55,7 +55,7 @@ The k8s-admin role is granted full access to all Kubernetes resources and action
 ---
 
 ## 2. Create Keycloak User Groups
-Now we will create the user groups that can access the Kubernetes-dashboard and add the roles to them. We will use the group "k8s-dashboard" and create 3 child groups as set below:
+We will now create the user groups that control access to the Kubernetes Dashboard. The parent group is k8s-dashboard, with three child groups as shown below:
 
 | User Group      | Child Group | Roles       |
 | :---            | :---        | :---        |
@@ -63,7 +63,9 @@ Now we will create the user groups that can access the Kubernetes-dashboard and 
 | k8s-dashboard   | settings    | `k8s-viewer`, `k8s-settings` |
 | k8s-dashboard   | admins      | `k8s-admin` |
 
-The rolebinding in Kubernetes will need to reflect this group/subgroup. For example:
+Each child group receives the appropriate Keycloak roles. These roles determine what the user can see or manage in the dashboard.
+
+To match Keycloak groups in Kubernetes RBAC, use the full group path as seen in the JWT token. For example:
 ```yaml
 subjects:
   - kind: Group
@@ -72,5 +74,11 @@ subjects:
 ```
 
 --- 
+
+## 3. Create Keycloak Users
+
+
+
+
 
 
