@@ -52,3 +52,15 @@ In Keycloak, we assign both roles (k8s-viewer and k8s-settings) to the k8s-setti
 
 The k8s-admin role is granted full access to all Kubernetes resources and actions. This is achieved by using the wildcard * for apiGroups, resources, and verbs. In contrast, we avoid using wildcards in the k8s-viewer role to prevent exposing sensitive resources such as secrets and other critical configuration data.
 
+---
+
+## 2. Create Keycloak User Groups
+Now we will create the user groups that can access the Kubernetes-dashboard and add the roles to them. We will use the group "k8s-dashboard" and create 3 child groups as set below:
+
+| User Group      | Child Group | Roles       |
+| :---            | :---        | :---        |
+| k8s-dasbboard   | viewers     | `k8s-viewer`  | 
+| k8s-dashboard   | settings    | `k8s-viewer`, `k8s-settings` |
+| k8s-dashboard   | admins      | `k8s-admin` |
+
+
