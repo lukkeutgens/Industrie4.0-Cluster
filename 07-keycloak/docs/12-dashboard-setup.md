@@ -95,9 +95,9 @@ Settings for a user:
 - **Credentials**: In this tab you can setup a password
 - **Groups**: In this tab you can assign main groups, not child groups. We have used child groups so we can not add the user to the groups here.
 
+---
 
 
-- 
 
 
 
