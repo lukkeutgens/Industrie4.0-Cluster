@@ -10,7 +10,7 @@ This version was chosen because it supports the --auto-build startup option, whi
 
 Future upgrades may require switching to a custom build or using the build command explicitly. Always verify compatibility before updating the image tag.
 
-> I have tried the newer images first with first deploying a build container and then the normal container but for still an unknown reason it never fully got it working. During debugging, I lowered the image version and tried the "auto-build" and got it working. For me, this is fine now because this is just for testing.
+> I have tried the newer images with first deploying a build container and then the normal container but for still an unknown reason I never got it fully working. During debugging, I lowered the image version and tried the "auto-build" and got it working. For me, this is fine now because this is just for testing. The error was related that after the build, the volume was empty when the pod with the "start" option ran.
 
 ---
 
