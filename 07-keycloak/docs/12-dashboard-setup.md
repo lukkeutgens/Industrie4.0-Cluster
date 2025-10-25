@@ -76,7 +76,28 @@ subjects:
 --- 
 
 ## 3. Create Keycloak Users
+Now I create 3x users. One as admin, the other for the settings and the last one as viewer only.
+> When using `Child Groups` you will have to go to that group itself to assign users to it. It's not possible in the **User edit** page to assing that user to a child group, there you can only select the Main Groups.
 
+| User      | User Group                |   Roles (auto from group)  |
+| :---      | :---                      | :---        |
+| iotadmin  | `k8s-dashboard/admins`    | `k8s-admin`  |
+| luk       | `k8s-dashboard/settings`  | `k8s-viewer`, `k8s-settings` |
+| leen      | `k8s-dashboard/viewers`   | `k8s-viewer`  | 
+
+Settings for a user:
+- **Username**: The login name for that user (no capital letters)
+- **Required user actions**: Select what a user should do when he logs in the first time.
+- **Email**: Give the user an email
+- **Email verified**: If not then the user needs to verify it when he logs in
+- **First name**: Real first name for user
+- **Last name**: Real last name for user
+- **Credentials**: In this tab you can setup a password
+- **Groups**: In this tab you can assign main groups, not child groups. We have used child groups so we can not add the user to the groups here.
+
+
+
+- 
 
 
 
