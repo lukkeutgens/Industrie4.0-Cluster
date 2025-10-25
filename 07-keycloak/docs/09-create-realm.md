@@ -22,3 +22,32 @@ You will see the following items:
 | Authentication      | Login flows, registration, and 2FA setup. Configure TOTP and custom login screens. |
 | Identity Providers  | External login sources like Google, GitHub, or other Keycloak servers. |
 | User Federation     | Integration with external user directories such as LDAP or Active Directory. | 
+
+---
+
+## 1. Create a new Realm
+When you first login, you will be in the `master` Realm. When you click on that name there is the option to make a new one, so let's do this.
+- **Resource file** : To import an earlier made Realm, not needed in our case
+- **Realm name** : The name for our new Realm. In my case this will be `iotcluster`
+- **Enabled** : Needs to `On` off course.
+Click on `Create`
+
+## 2. Edit Realm Settings
+After creating the Realm we can further edit the settings to make it more complete.
+
+| Setting            | Description              | 
+| :---               | :---                     |
+| Realm ID           | Internal identifier for the realm (e.g., iotcluster). Used in URLs and API calls. |
+| Display Name       | Optional name shown in the Admin Console UI. Can be more descriptive than the ID. |
+| HTML Display Name  | Optional HTML-formatted name shown in login screens. Supports basic HTML tags. |
+| Frontend URL       | Overrides the default frontend URL used in redirects. Useful behind reverse proxies or Ingress. |
+| Require SSL        | nforces HTTPS for all requests. Options: none, external requests, or all requests. |
+| ACR to LoA Mapping | Maps Authentication Context Class References (ACR) to Levels of Assurance (LoA). Used in advanced SSO setups. |
+| User-Managed Access | Enables UMA protocol for user-controlled resource sharing. Rarely used unless integrating with OAuth2 resource servers. | 
+| Endpoints          | Shows all available endpoints for the realm (e.g., token, userinfo, certs). Useful for debugging and integration. |
+
+
+
+
+
+
