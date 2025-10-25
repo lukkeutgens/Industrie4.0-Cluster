@@ -46,6 +46,7 @@ Replace `https://keycloak.iot.keutgens.be/realms/iotcluster` with your actual Ke
 
 | Flag	                      | Description  |
 | :---                        | :---          | 
+| --enable-insecure-login     | Enables the service account (token with kubectl)  |
 | --authentication-mode=oidc	| Enables OIDC login flow |
 | --oidc-issuer-url	          | Points to your Keycloak realm |
 | --oidc-client-id	          | Must match the client ID configured in Keycloak |
