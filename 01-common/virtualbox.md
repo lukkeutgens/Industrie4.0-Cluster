@@ -1,7 +1,5 @@
-# Oracle VirtualBox Settings
-Below the settings I have setup VirtualBox to run Debian 12 as a headless server.
-Not all are shown, only the ones that need to be changed to run it in Windows 11 Home.
-
+# Oracle VirtualBox Settings (Debian 12 Headless on Windows 11 Home)
+This document outlines the essential VirtualBox settings I used to run Debian 12 headless servers on Windows 11 Home. Only the settings that require adjustment for compatibility and performance are listed.
 
 ## System
 - Base Memory: `6055MB`
@@ -11,7 +9,9 @@ Not all are shown, only the ones that need to be changed to run it in Windows 11
 - Motherboard Hardware clock in UTC: `On`
 - Motherboard UEFI: `Off`
 - Motherboard Secure Boot: `Off`
-- Amount CPU's: Control plane server: `6`, Worker nodes: `4`
+- Amount CPU's:
+    - Control plane server: `6`
+    - Worker nodes: `4`
 - Processing Cap: `100%`
 - Feature PAE/NX: `On`
 - Feature Nested VT-x/AMD-V: `Off`
@@ -57,6 +57,3 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nohz=off idle=poll"
 - **nohz=off** : Force the Kernel to regulary send interrupts, so it does not go into a quite state.
 - **idle=poll** : Force the CPU to stay awake, no sleeping for him.
 
-
-
-> At first I had multiple 
