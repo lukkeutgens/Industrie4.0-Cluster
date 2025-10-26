@@ -132,4 +132,28 @@ So for our Kubernetes Dashboard:
  - **Valid post logout redirect URIs**: https://kubedash.iot.keutgens.be
  - **Web origins**: https://kubedash.iot.keutgens.be  
 
+| Setting                                   | Value                                        | Description                      |
+| :---                                      | :---                                         | :---
+| **Client type**                           | `OpenID Connect`                             |     |
+| **ClientID**                              | `k8s-dashboard`                              |     |
+| **Name**                                  | `Kubernetes Dashboard`                       |     |
+| **Description**                           | `Kubernetes Dashboard OpenID Connect Client` |     |
+| **Always display in UI**                  | `Off`                                        |     |
+| **Client authentication**                 | `On`                                         |     |
+| **Authorization**                         | `Off`                                        |     |
+| **Authentication Flows**                  |                                              |     |
+| **Standard Flow**                         | `On`                                         |     |
+| **Direct Access Grants**                  | `On`                                         |     |
+| **Implicit Flow**                         | `Off`                                        |     |
+| **Service accounts roles**                | `Off`                                        |     |
+| **OAuth 2.0 Device Authorization Grant**  | `Off`                                        |     |
+| **OIDC CIBA Grant**                       | `Off`                                        |     |
+| **Root URL**                              | `https://kubedash.iot.keutgens.be`           |     |
+| **Home URL**                              | `https://kubedash.iot.keutgens.be`           |     |
+| **Valid redirect URIs**                   | `https://kubedash.iot.keutgens.be/*`         |     |
+| **Valid post logout redirect URIs**       | `https://kubedash.iot.keutgens.be`           |     |
+| **Web origins**                           | `https://kubedash.iot.keutgens.be`           |     |
+
+
+
 
