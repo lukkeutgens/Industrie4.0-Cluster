@@ -197,10 +197,6 @@ Add the following content:
 web:
   scaling:
     replicas: 2     # for Web component
-  container:
-    args:
-      - --authentication-mode=oidc
-      - --enable-insecure-login=false
 
 api:
   scaling:
@@ -228,7 +224,6 @@ oidc:
   enabled: true
   issuerUrl: https://keycloak.iot.keutgens.be/realms/iot-cluster
   clientId: k8s-dashboard
-  clientSecret: "<your-keycloak-client-secret>"  # Replace or inject via secret
   groupsClaim: groups
   usernameClaim: preferred_username
 
@@ -257,6 +252,7 @@ resources:
     memory: 256Mi
   requests:
     cpu: 100m
+    memory: 128Mi
 ```
 
 Deploy the Dashboard with OIDC:
