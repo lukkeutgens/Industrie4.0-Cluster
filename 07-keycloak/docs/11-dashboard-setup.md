@@ -197,6 +197,10 @@ Add the following content:
 web:
   scaling:
     replicas: 2     # for Web component
+  extraArgs:
+    - --authentication-mode=oidc
+    - --enable-insecure-login=false
+
 api:
   scaling:
     replicas: 2     # for API component
@@ -226,12 +230,6 @@ oidc:
   clientSecret: "<your-keycloak-client-secret>"  # Replace or inject via secret
   groupsClaim: groups
   usernameClaim: preferred_username
-
-extraArgs:
-  - --authentication-mode=oidc
-  - --enable-insecure-login=false
-  - --token-ttl=1800
-  - --token-cleanup=true
 
 ingress:
   enabled: true
