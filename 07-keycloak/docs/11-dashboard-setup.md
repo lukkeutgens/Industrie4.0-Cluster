@@ -304,7 +304,7 @@ spec:
 ```
 Deploy deze Ingress:
 ```bash
-kubectl apply -f k8s-dashboard-ingress.yamlµ
+kubectl apply -f k8s-dashboard-ingress.yaml
 ```
 
 
