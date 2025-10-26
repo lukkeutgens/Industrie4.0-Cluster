@@ -269,6 +269,44 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
   --values k8s-dashboard-values.yaml
 ```
 
+### Create a new Ingress Resource
+Create the file:
+```bash
+vi k8s-dashboard-ingress.yaml
+```
+Add content:
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-ingress
+  namespace: kubernetes-dashboard
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+spec:
+  tls:
+    - hosts:
+        - kubedash.iot.keutgens.be
+      secretName: kubedash-tls
+  rules:
+    - host: kubedash.iot.keutgens.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard-kong-proxy
+                port:
+                  number: 443
+```
+Deploy deze Ingress:
+```bash
+kubectl apply -f k8s-dashboard-ingress.yamlµ
+```
+
 
 
 
