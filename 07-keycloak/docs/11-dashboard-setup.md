@@ -306,7 +306,8 @@ kubectl apply -f k8s-dashboard-ingress.yaml
 > STOPPED FOR NOW WITH CHANGING THE FILE
 > /etc/kubernetes/manifests/kube-apiserver.yaml
 >
-> BUT STILL NO LUCK! 
+> AFTER MORE RESEARCH I WILL NEED TO WORK WITH **OAuth2 proxy** TO GET IT WORKING! BUT THAT IS FOR NEXT TIME...
+> 
 
 
 
