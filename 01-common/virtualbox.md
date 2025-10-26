@@ -3,7 +3,8 @@ This document outlines the essential VirtualBox settings I used to run Debian 12
 
 ---
 
-## System
+## VirtualBox Settings
+### System
 - Base Memory: `6055MB`
 - Chipset: `PIIX3`
 - TPM Version: `None`
@@ -20,13 +21,23 @@ This document outlines the essential VirtualBox settings I used to run Debian 12
 - Paravirtualization Interface: `KVM`
 - Hardware Virtualization Nested Paging: `Enabled`
 
-## Storage
+### Storage
 - Controller Name: `SATA`
 - Controller Type: `AHCI`
 - Port Count: `2`
 - Use Host I/O Cache: `Enabled`
-
-## Network (Single Adapter)
+- disk1.vdi 
+    - Hard Disk: SATA Port 0
+    - Solid-state Drive: Enabled
+    - Hot-pluggable: Disabled
+    - Disk size: 60GB
+ - disk2.vdi 
+    - Hard Disk: SATA Port 1
+    - Solid-state Drive: Enabled
+    - Hot-pluggable: Disabled
+    - Disk size: 160GB
+  
+### Network (Single Adapter)
 - Enable Network Adapter: `Enabled`
 - Attached to: `Bridged Adapter`
 - Adapter Type: `Intel PRO/1000 MT Desktop (82540OEM)
@@ -57,7 +68,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 ```
 To:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet nohz=off idle=poll"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet mitigations=off nohz=off idle=poll"
 ```
 Explanation:
 - **nohz=off** : Forces the kernel to send regular timer interrupts, preventing deep idle states.
