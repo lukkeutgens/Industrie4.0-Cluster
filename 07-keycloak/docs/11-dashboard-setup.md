@@ -184,7 +184,7 @@ stringData:
 ```
 Apply the secret to your cluster:
 ```bash
-Kubectl apply -f k8s-dashboard-secret.yaml
+kubectl apply -f k8s-dashboard-secret.yaml
 ```
 
 ### Create the Dashboard Helm Values File
