@@ -160,7 +160,74 @@ It's best for to setup a single client for each service. You could use the same 
 
 --- 
 
-## 5. Config Kubernetes Dashboard with OIDC
+## 5. Configure Kubernetes Dashboard with OIDC
+To enable secure login to the Kubernetes Dashboard using Keycloak as an OpenID Connect (OIDC) identity provider, we need to configure the Dashboard to use OIDC and provide it with the necessary credentials. This involves creating a Kubernetes Secret to store the Keycloak client secret, and a Helm values file to configure the Dashboard with the correct OIDC parameters.
+
+### Create the Kubernetes Secret
+The Dashboard needs access to the Keycloak client secret to authenticate securely. You can find this secret in Keycloak under: 
+Clients → k8s-dashboard → Credentials tab
+
+Copy the value of the Client Secret and create the Kubernetes Secret manifest:
+```bash
+vi k8s-dashboard-secret.yaml
+```
+Replace <secret-here> with the actual secret:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dashboard-oidc-secret
+  namespace: kubernetes-dashboard
+type: Opaque
+stringData:
+  clientSecret: "<secret-here>"
+```
+Apply the secret to your cluster:
+```bash
+Kubectl apply -f k8s-dashboard-secret.yaml
+```
+
+### Create the Dashboard Helm Values File
+To configure the Dashboard with OIDC, create a Helm values file that includes the necessary authentication parameters:
+```bash
+vi k8s-dashboard-values.yaml
+```
+Add content:
+```yaml
+extraEnv:
+  - name: OIDC_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: dashboard-oidc-secret
+        key: clientSecret
+
+oidc:
+  enabled: true
+  issuerUrl: https://keycloak.iot.keutgens.be/realms/iot-cluster
+  clientId: k8s-dashboard
+  clientSecret: "$(OIDC_CLIENT_SECRET)"  # Referenced via env var
+  groupsClaim: groups
+  usernameClaim: preferred_username
+```
+Deploy the Dashboard with OIDC:
+```bash
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard \
+  --namespace kubernetes-dashboard \
+  --values k8s-dashboard-values.yaml
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
