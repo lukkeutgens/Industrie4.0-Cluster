@@ -59,7 +59,7 @@ We will now create the user groups that control access to the Kubernetes Dashboa
 
 | User Group      | Child Group | Roles       |
 | :---            | :---        | :---        |
-| k8s-dasbboard   | viewers     | `k8s-viewer`  | 
+| k8s-dashboard   | viewers     | `k8s-viewer`  | 
 | k8s-dashboard   | settings    | `k8s-viewer`, `k8s-settings` |
 | k8s-dashboard   | admins      | `k8s-admin` |
 
@@ -69,7 +69,7 @@ To match Keycloak groups in Kubernetes RBAC, use the full group path as seen in 
 ```yaml
 subjects:
   - kind: Group
-    name: /k8s-dasbboard/viewer
+    name: /k8s-dashboard/viewer
     apiGroup: rbac.authorization.k8s.io
 ```
 
@@ -157,6 +157,10 @@ It's best for to setup a single client for each service. You could use the same 
 | **Backchannel logout URL**                      | empty      | Optional server-side logout endpoint; not used in this setup |
 | **Backchannel logout session required**         | On         | Ensures user sessions are properly terminated during backchannel logout |
 | **Backchannel logout revoke offline sessions**  | Off        | Offline tokens remain valid after logout; no revocation applied |
+
+--- 
+
+## 5. Config Kubernetes Dashboard with OIDC
 
 
 
