@@ -108,9 +108,24 @@ An OIDC client in Keycloak defines:
 
 This client acts as the bridge between Keycloak and Kubernetes Dashboard, allowing users to log in using their Keycloak credentials and receive a token that Kubernetes can validate and use for RBAC.
 
+### Setup
+It's best for to setup a single client for each service. You could use the same but this might bring limitations we don't want.
 
-
-
-
+So for our Kubernetes Dashboard:
+- **Client type**: OpenID Connect
+- **ClientID**: k8s-dashboard     <- Unique name for client
+- **Name**: Kubernetes Dashboard  <- Usefull name
+- **Description**: Kubernetes Dashboard OpenID Connect Client
+- **Always display in UI**: Off (if client is shown in users account UI)
+- **Client authentication**: On
+- **Authorization**: Off (is for Keycloak internal authorization services)
+- **Authentication Flows**: 
+    - **Standard Flow**: On (needed for browser based login)
+    - **Implicit Flow**: Off (older)
+    - **Direct Access Grants**: On (For flexibility)
+    - **OAuth 2.0 Device Authorization Grant: Off (for devices without browser)
+    - **OIDC CIBA Grant**: Off (greyed out, flow for decoupled login, not for us)
+ 
+- 
 
 
