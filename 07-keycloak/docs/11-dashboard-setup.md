@@ -134,24 +134,24 @@ So for our Kubernetes Dashboard:
 
 | Setting                                   | Value                                        | Description                      |
 | :---                                      | :---                                         | :---
-| **Client type**                           | `OpenID Connect`                             |     |
-| **ClientID**                              | `k8s-dashboard`                              |     |
-| **Name**                                  | `Kubernetes Dashboard`                       |     |
-| **Description**                           | `Kubernetes Dashboard OpenID Connect Client` |     |
-| **Always display in UI**                  | `Off`                                        |     |
-| **Client authentication**                 | `On`                                         |     |
-| **Authorization**                         | `Off`                                        |     |
-| **Standard Flow**                         | `On`                                         |     |
-| **Direct Access Grants**                  | `On`                                         |     |
-| **Implicit Flow**                         | `Off`                                        |     |
-| **Service accounts roles**                | `Off`                                        |     |
-| **OAuth 2.0 Device Authorization Grant**  | `Off`                                        |     |
-| **OIDC CIBA Grant**                       | `Off`                                        |     |
-| **Root URL**                              | `https://kubedash.iot.keutgens.be`           |     |
-| **Home URL**                              | `https://kubedash.iot.keutgens.be`           |     |
-| **Valid redirect URIs**                   | `https://kubedash.iot.keutgens.be/*`         |     |
-| **Valid post logout redirect URIs**       | `https://kubedash.iot.keutgens.be`           |     |
-| **Web origins**                           | `https://kubedash.iot.keutgens.be`           |     |
+| **Client type**                           | `OpenID Connect`                             | Protocol used for user authentication and token issuance |
+| **ClientID**                              | `k8s-dashboard`                              | Unique identifier for the client application |
+| **Name**                                  | `Kubernetes Dashboard`                       | Display name for the client in Keycloak UI |
+| **Description**                           | `Kubernetes Dashboard OpenID Connect Client` | Optional description for clarity  |
+| **Always display in UI**                  | `Off`                                        | Hides the client from the user's application list in the Keycloak account portal |
+| **Client authentication**                 | `On`                                         | Enables client to authenticate using its secret during token exchange |
+| **Authorization**                         | `Off`                                        | Disables Keycloak's internal authorization policies (RBAC handled in Kubernetes) |
+| **Standard Flow**                         | `On`                                         | Enables the Authorization Code Flow for browser-based login|
+| **Direct Access Grants**                  | `On`                                         | Allows token requests via username/password without browser interaction |
+| **Implicit Flow**                         | `Off`                                        | Deprecated flow; disabled for security reasons |
+| **Service accounts roles**                | `Off`                                        | Not needed; authentication is user-based, not service-based |
+| **OAuth 2.0 Device Authorization Grant**  | `Off`                                        | Not applicable; used for devices without browsers  |
+| **OIDC CIBA Grant**                       | `Off`                                        | Not applicable; used for decoupled login flows |
+| **Root URL**                              | `https://kubedash.iot.keutgens.be`           | Base URL of the Kubernetes Dashboard application|
+| **Home URL**                              | `https://kubedash.iot.keutgens.be`           | Landing page for the application |
+| **Valid redirect URIs**                   | `https://kubedash.iot.keutgens.be/*`         | Allowed callback URLs after successful login  |
+| **Valid post logout redirect URIs**       | `https://kubedash.iot.keutgens.be`           | URL to redirect users after logout |
+| **Web origins**                           | `https://kubedash.iot.keutgens.be`           | Allowed origin for CORS requests during login and token exchange |
 
 
 
