@@ -194,20 +194,59 @@ vi k8s-dashboard-values.yaml
 ```
 Add the following content:
 ```yaml
-extraEnv:
-  - name: OIDC_CLIENT_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: dashboard-oidc-secret
-        key: clientSecret
+replicaCount: 2
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - kubernetes-dashboard
+        topologyKey: "kubernetes.io/hostname"
 
 oidc:
   enabled: true
   issuerUrl: https://keycloak.iot.keutgens.be/realms/iot-cluster
   clientId: k8s-dashboard
-  clientSecret: "$(OIDC_CLIENT_SECRET)"  # Referenced via env var
+  clientSecret: "<your-keycloak-client-secret>"  # Replace or inject via secret
   groupsClaim: groups
   usernameClaim: preferred_username
+
+extraArgs:
+  - --authentication-mode=oidc
+  - --enable-insecure-login=false
+  - --token-ttl=1800
+  - --token-cleanup=true
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+  hosts:
+    - host: kubedash.iot.keutgens.be
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - kubedash.iot.keutgens.be
+      secretName: kubedash-tls
+
+metricsScraper:
+  enabled: true
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 ```
 
 Deploy the Dashboard with OIDC:
