@@ -207,6 +207,13 @@ affinity:
                 - kubernetes-dashboard
         topologyKey: "kubernetes.io/hostname"
 
+extraEnv:
+  - name: OIDC_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: dashboard-oidc-secret
+        key: clientSecret
+
 oidc:
   enabled: true
   issuerUrl: https://keycloak.iot.keutgens.be/realms/iot-cluster
