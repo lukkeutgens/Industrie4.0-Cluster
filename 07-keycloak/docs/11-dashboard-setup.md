@@ -194,7 +194,12 @@ vi k8s-dashboard-values.yaml
 ```
 Add the following content:
 ```yaml
-replicaCount: 2
+web:
+  scaling:
+    replicas: 2     # for Web component
+api:
+  scaling:
+    replicas: 2     # for API component
 
 affinity:
   podAntiAffinity:
