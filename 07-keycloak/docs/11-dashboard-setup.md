@@ -202,6 +202,23 @@ api:
   scaling:
     replicas: 2     # for API component
 
+auth:
+  containers:
+    env:
+      - name: OIDC_ISSUER_URL
+        value: https://keycloak.iot.keutgens.be/realms/iot-cluster
+      - name: OIDC_CLIENT_ID
+        value: k8s-dashboard
+      - name: OIDC_USERNAME_CLAIM
+        value: preferred_username
+      - name: OIDC_GROUPS_CLAIM
+        value: groups
+      - name: OIDC_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: dashboard-oidc-secret
+            key: clientSecret
+
 affinity:
   podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -212,20 +229,6 @@ affinity:
               values:
                 - kubernetes-dashboard
         topologyKey: "kubernetes.io/hostname"
-
-extraEnv:
-  - name: OIDC_CLIENT_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: dashboard-oidc-secret
-        key: clientSecret
-
-oidc:
-  enabled: true
-  issuerUrl: https://keycloak.iot.keutgens.be/realms/iot-cluster
-  clientId: k8s-dashboard
-  groupsClaim: groups
-  usernameClaim: preferred_username
 
 ingress:
   enabled: true
