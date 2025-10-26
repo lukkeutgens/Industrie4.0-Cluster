@@ -121,11 +121,15 @@ So for our Kubernetes Dashboard:
 - **Authorization**: Off (is for Keycloak internal authorization services)
 - **Authentication Flows**: 
     - **Standard Flow**: On (needed for browser based login)
-    - **Implicit Flow**: Off (older)
     - **Direct Access Grants**: On (For flexibility)
-    - **OAuth 2.0 Device Authorization Grant: Off (for devices without browser)
+    - **Implicit Flow**: Off (older)
+    - **Service accounts roles**: Off (non-human service accounts)
+    - **OAuth 2.0 Device Authorization Grant**: Off (for devices without browser)
     - **OIDC CIBA Grant**: Off (greyed out, flow for decoupled login, not for us)
- 
-- 
+ - **Root URL**: https://kubedash.iot.keutgens.be
+ - **Home URL**: https://kubedash.iot.keutgens.be
+ - **Valid redirect URIs**: https://kubedash.iot.keutgens.be/*
+ - **Valid post logout redirect URIs**: https://kubedash.iot.keutgens.be
+ - **Web origins**: https://kubedash.iot.keutgens.be  
 
 
