@@ -303,7 +303,10 @@ kubectl apply -f k8s-dashboard-ingress.yaml
 
 
 
-
+> STOPPED FOR NOW WITH CHANGING THE FILE
+> /etc/kubernetes/manifests/kube-apiserver.yaml
+>
+> BUT STILL NO LUCK! 
 
 
 
