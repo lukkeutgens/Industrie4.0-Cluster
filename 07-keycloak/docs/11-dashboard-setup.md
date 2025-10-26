@@ -141,7 +141,7 @@ So for our Kubernetes Dashboard:
 | **Always display in UI**                  | `Off`                                        |     |
 | **Client authentication**                 | `On`                                         |     |
 | **Authorization**                         | `Off`                                        |     |
-| **Authentication Flows**                  |                                              |     |
+| **Authentication Flows**                                                                       |
 | **Standard Flow**                         | `On`                                         |     |
 | **Direct Access Grants**                  | `On`                                         |     |
 | **Implicit Flow**                         | `Off`                                        |     |
