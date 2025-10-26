@@ -112,26 +112,6 @@ This client acts as the bridge between Keycloak and Kubernetes Dashboard, allowi
 It's best for to setup a single client for each service. You could use the same but this might bring limitations we don't want.
 
 So for our Kubernetes Dashboard:
-- **Client type**: OpenID Connect
-- **ClientID**: k8s-dashboard     <- Unique name for client
-- **Name**: Kubernetes Dashboard  <- Usefull name
-- **Description**: Kubernetes Dashboard OpenID Connect Client
-- **Always display in UI**: Off (if client is shown in users account UI)
-- **Client authentication**: On
-- **Authorization**: Off (is for Keycloak internal authorization services)
-- **Authentication Flows**: 
-    - **Standard Flow**: On (needed for browser based login)
-    - **Direct Access Grants**: On (For flexibility)
-    - **Implicit Flow**: Off (older)
-    - **Service accounts roles**: Off (non-human service accounts)
-    - **OAuth 2.0 Device Authorization Grant**: Off (for devices without browser)
-    - **OIDC CIBA Grant**: Off (greyed out, flow for decoupled login, not for us)
- - **Root URL**: https://kubedash.iot.keutgens.be
- - **Home URL**: https://kubedash.iot.keutgens.be
- - **Valid redirect URIs**: https://kubedash.iot.keutgens.be/*
- - **Valid post logout redirect URIs**: https://kubedash.iot.keutgens.be
- - **Web origins**: https://kubedash.iot.keutgens.be  
-
 | Setting                                   | Value                                        | Description                      |
 | :---                                      | :---                                         | :---
 | **Client type**                           | `OpenID Connect`                             | Protocol used for user authentication and token issuance |
