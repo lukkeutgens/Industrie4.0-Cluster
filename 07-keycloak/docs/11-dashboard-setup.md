@@ -171,7 +171,7 @@ Copy the value of the Client Secret and create the Kubernetes Secret manifest:
 ```bash
 vi k8s-dashboard-secret.yaml
 ```
-Replace <secret-here> with the actual secret:
+Paste the following content and replace <secret-here> with the actual secret:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -192,7 +192,7 @@ To configure the Dashboard with OIDC, create a Helm values file that includes th
 ```bash
 vi k8s-dashboard-values.yaml
 ```
-Add content:
+Add the following content:
 ```yaml
 extraEnv:
   - name: OIDC_CLIENT_SECRET
@@ -209,7 +209,9 @@ oidc:
   groupsClaim: groups
   usernameClaim: preferred_username
 ```
+
 Deploy the Dashboard with OIDC:
+Install or upgrade the Dashboard using Helm:
 ```bash
 helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard \
   --namespace kubernetes-dashboard \
