@@ -73,6 +73,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet mitigations=off nohz=off idle=halt"
 Explanation:
 - **nohz=off** : Forces the kernel to send regular timer interrupts, preventing deep idle states.
 - **idle=poll** : Keeps the CPU active, avoiding sleep transitions that can cause soft lockups.
+- **mitigations=off** : Disables CPU vulnerability mitigations (e.g. Spectre, Meltdown) to reduce overhead and improve performance in virtualized environments.
+- **quiet** : Suppresses most kernel boot messages to reduce console output during startup (standard active in GRUB).
 
 3. Apply changes
 ```bash
