@@ -68,7 +68,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 ```
 To:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet mitigations=off nohz=off idle=poll"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet mitigations=off nohz=off idle=halt"
 ```
 Explanation:
 - **nohz=off** : Forces the kernel to send regular timer interrupts, preventing deep idle states.
