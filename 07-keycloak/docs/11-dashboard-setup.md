@@ -197,9 +197,10 @@ Add the following content:
 web:
   scaling:
     replicas: 2     # for Web component
-  extraArgs:
-    - --authentication-mode=oidc
-    - --enable-insecure-login=false
+  container:
+    args:
+      - --authentication-mode=oidc
+      - --enable-insecure-login=false
 
 api:
   scaling:
@@ -256,7 +257,6 @@ resources:
     memory: 256Mi
   requests:
     cpu: 100m
-    memory: 128Mi
 ```
 
 Deploy the Dashboard with OIDC:
