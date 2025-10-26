@@ -111,14 +111,18 @@ This client acts as the bridge between Keycloak and Kubernetes Dashboard, allowi
 ### Setup
 It's best for to setup a single client for each service. You could use the same but this might bring limitations we don't want.
 
-So for our Kubernetes Dashboard:
+#### General Settings
 | Setting                                   | Value                                        | Description                      |
-| :---                                      | :---                                         | :---
+| :---                                      | :---                                         | :---   | 
 | **Client type**                           | `OpenID Connect`                             | Protocol used for user authentication and token issuance |
 | **ClientID**                              | `k8s-dashboard`                              | Unique identifier for the client application |
 | **Name**                                  | `Kubernetes Dashboard`                       | Display name for the client in Keycloak UI |
 | **Description**                           | `Kubernetes Dashboard OpenID Connect Client` | Optional description for clarity  |
 | **Always display in UI**                  | `Off`                                        | Hides the client from the user's application list in the Keycloak account portal |
+
+#### Capability config
+| Setting                                   | Value                                        | Description                      |
+| :---                                      | :---                                         | :---   | 
 | **Client authentication**                 | `On`                                         | Enables client to authenticate using its secret during token exchange |
 | **Authorization**                         | `Off`                                        | Disables Keycloak's internal authorization policies (RBAC handled in Kubernetes) |
 | **Standard Flow**                         | `On`                                         | Enables the Authorization Code Flow for browser-based login|
@@ -127,12 +131,20 @@ So for our Kubernetes Dashboard:
 | **Service accounts roles**                | `Off`                                        | Not needed; authentication is user-based, not service-based |
 | **OAuth 2.0 Device Authorization Grant**  | `Off`                                        | Not applicable; used for devices without browsers  |
 | **OIDC CIBA Grant**                       | `Off`                                        | Not applicable; used for decoupled login flows |
+
+#### Access settings
+| Setting                                   | Value                                        | Description                      |
+| :---                                      | :---                                         | :---   | 
 | **Root URL**                              | `https://kubedash.iot.keutgens.be`           | Base URL of the Kubernetes Dashboard application|
 | **Home URL**                              | `https://kubedash.iot.keutgens.be`           | Landing page for the application |
 | **Valid redirect URIs**                   | `https://kubedash.iot.keutgens.be/*`         | Allowed callback URLs after successful login  |
 | **Valid post logout redirect URIs**       | `https://kubedash.iot.keutgens.be`           | URL to redirect users after logout |
 | **Web origins**                           | `https://kubedash.iot.keutgens.be`           | Allowed origin for CORS requests during login and token exchange |
 
-
-
-
+#### Login settings
+| Setting                                   | Value                                        | Description                      |
+| :---                                      | :---                                         | :---   | 
+| **Login theme**                 | empty      |   |
+| **Consent required**            | Off        |   |
+| **Display client on screen**    | Off        |   |
+| **Client consent screen text**  | empty      |   | 
