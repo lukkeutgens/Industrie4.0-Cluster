@@ -142,9 +142,21 @@ It's best for to setup a single client for each service. You could use the same 
 | **Web origins**                           | `https://kubedash.iot.keutgens.be`           | Allowed origin for CORS requests during login and token exchange |
 
 #### Login settings
-| Setting                                   | Value                                        | Description                      |
-| :---                                      | :---                                         | :---   | 
+| Setting                         | Value      | Description                      |
+| :---                            | :---       | :---                             | 
 | **Login theme**                 | empty      |   |
 | **Consent required**            | Off        |   |
 | **Display client on screen**    | Off        |   |
 | **Client consent screen text**  | empty      |   | 
+
+#### Logout settings
+| Setting                                         | Value      | Description                      |
+| :---                                            | :---       | :---                             | 
+| **Front channel logout**                       | On        |  |
+| **Front-channel logout URL**                   | empty |  |
+| **Backchannel logout URL**                     | empty |  |
+| **Backchannel logout session required**        | On    |  |
+| **Backchannel logout revoke offline sessions** | Off    |  |
+
+
+
