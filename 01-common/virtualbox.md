@@ -1,52 +1,57 @@
 # Oracle VirtualBox Settings (Debian 12 Headless on Windows 11 Home)
 This document outlines the essential VirtualBox settings I used to run Debian 12 headless servers on Windows 11 Home. Only the settings that require adjustment for compatibility and performance are listed.
 
+---
+
 ## System
 - Base Memory: `6055MB`
-- Chipset: `P!iX3`
+- Chipset: `PIIX3`
 - TPM Version: `None`
-- Motherboard I/O APiC: `On`
-- Motherboard Hardware clock in UTC: `On`
-- Motherboard UEFI: `Off`
-- Motherboard Secure Boot: `Off`
+- I/O APiC: `Enabled`
+- Hardware clock in UTC: `Enabled`
+- UEFI: `Disabled`
+- Motherboard Secure Boot: `Disabled`
 - Amount CPU's:
     - Control plane server: `6`
     - Worker nodes: `4`
 - Processing Cap: `100%`
-- Feature PAE/NX: `On`
-- Feature Nested VT-x/AMD-V: `Off`
+- PAE/NX: `Enabled`
+- Nested VT-x/AMD-V: `Disabled`
 - Paravirtualization Interface: `KVM`
-- Hardware Virtualization Nested Paging: `On`
+- Hardware Virtualization Nested Paging: `Enabled`
 
 ## Storage
 - Controller Name: `SATA`
 - Controller Type: `AHCI`
 - Port Count: `2`
-- Use Host I/O Cache: `On`
+- Use Host I/O Cache: `Enabled`
 
-## Network (I use only 1 adapter)
-- Enable Network Adapter: `On`
+## Network (Single Adapter)
+- Enable Network Adapter: `Enabled`
 - Attached to: `Bridged Adapter`
 - Adapter Type: `Intel PRO/1000 MT Desktop (82540OEM)
 - Promiscuous Mode: `Allow All`
 
-# WARNING!
-I'm running Windows 11 Home edition. This project is just for learning. One thing I have learned is that Windows 11 Home and Hyper-V are not a fan off VirtualBox. My VM servers are experiences issues like CPU soft lockups.
+---
 
+## ⚠️ Important Notes on Windows 11 Home + VirtualBox
+This setup is for learning purposes only. Windows 11 Home uses Hyper-V components for security, which interferes with VirtualBox's native virtualization. As a result, VirtualBox falls back to **NEM (Native Execution Mode)**, which is less performant and can cause issues like CPU soft lockups.
+
+Typical error observed:
 ```bash
 BUG: soft lockup - CPU#1 stuck for 21s! [swapper/1:0]
 ```
 
-After some research this is caused by Windows using Hyper-V for it's security, meaning it's best to leave it **on**. VirtualBox will detect this and use NEM (Native Execution Mode) which is less performant.
+Since Hyper-V is tied to Windows security features, it's best to leave it enabled. To mitigate performance issues, I’ve configured my laptop’s power profile to maximum performance, disabling sleep and idle states.
 
-I've setup my laptop power settings to the max, so the CPU does not Idle, no sleeping mode in Windows to keep things running fast.
-
-In Debian I made the following adjustment in the hope the servers will run more smoothly:
-Open the Grub file:
+### Debian Kernel Tweaks (GRUB)
+To improve VM responsiveness under NEM mode, I applied the following kernel parameters:
+1. Edit GRUB
 ```bash
 sudo vi /etc/default/grub
 ```
-Change the following:
+2. Modify the line
+From:
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet"      
 ```
@@ -54,6 +59,15 @@ To:
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet nohz=off idle=poll"
 ```
-- **nohz=off** : Force the Kernel to regulary send interrupts, so it does not go into a quite state.
-- **idle=poll** : Force the CPU to stay awake, no sleeping for him.
+Explanation:
+- **nohz=off** : Forces the kernel to send regular timer interrupts, preventing deep idle states.
+- **idle=poll** : Keeps the CPU active, avoiding sleep transitions that can cause soft lockups.
+
+3. Apply changes
+```bash
+sudo update-grub
+sudo reboot
+```
+
+
 
