@@ -1,0 +1,63 @@
+web:
+  scaling:
+    replicas: 2     # for Web component
+
+api:
+  scaling:
+    replicas: 2     # for API component
+
+auth:
+  containers:
+    env:
+      - name: OIDC_ISSUER_URL
+        value: https://keycloak.iot.keutgens.be/realms/iot-cluster
+      - name: OIDC_CLIENT_ID
+        value: k8s-dashboard
+      - name: OIDC_USERNAME_CLAIM
+        value: preferred_username
+      - name: OIDC_GROUPS_CLAIM
+        value: groups
+      - name: OIDC_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: dashboard-oidc-secret
+            key: clientSecret
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - kubernetes-dashboard
+        topologyKey: "kubernetes.io/hostname"
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+  hosts:
+    - host: kubedash.iot.keutgens.be
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - kubedash.iot.keutgens.be
+      secretName: kubedash-tls
+
+metricsScraper:
+  enabled: true
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
