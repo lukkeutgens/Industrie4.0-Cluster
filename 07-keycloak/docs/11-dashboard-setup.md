@@ -144,19 +144,19 @@ It's best for to setup a single client for each service. You could use the same 
 #### Login settings
 | Setting                         | Value      | Description                      |
 | :---                            | :---       | :---                             | 
-| **Login theme**                 | empty      |   |
-| **Consent required**            | Off        |   |
-| **Display client on screen**    | Off        |   |
-| **Client consent screen text**  | empty      |   | 
+| **Login theme**                 | empty      | Optional visual theme for the login screen; leave empty to use default  |
+| **Consent required**            | Off        | Users are not prompted to approve access when logging in  |
+| **Display client on screen**    | Off        | Hides the client from the user's application list in the Keycloak account portal  |
+| **Client consent screen text**  | empty      | Optional custom text shown on the consent screen, not used in this setup  | 
 
 #### Logout settings
 | Setting                                         | Value      | Description                      |
 | :---                                            | :---       | :---                             | 
-| **Front channel logout**                       | On        |  |
-| **Front-channel logout URL**                   | empty |  |
-| **Backchannel logout URL**                     | empty |  |
-| **Backchannel logout session required**        | On    |  |
-| **Backchannel logout revoke offline sessions** | Off    |  |
+| **Front channel logout**                        | On         | Enables browser-based logout via redirect from the application |
+| **Front-channel logout URL**                    | empty      | Optional URL to trigger logout from the application; not required here |
+| **Backchannel logout URL**                      | empty      | Optional server-side logout endpoint; not used in this setup |
+| **Backchannel logout session required**         | On         | Ensures user sessions are properly terminated during backchannel logout |
+| **Backchannel logout revoke offline sessions**  | Off        | Offline tokens remain valid after logout; no revocation applied |
 
 
 
