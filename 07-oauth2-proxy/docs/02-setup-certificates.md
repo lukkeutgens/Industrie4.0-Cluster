@@ -75,3 +75,11 @@ spec:
   ca:
     secretName: root-ca-secret
 ```
+Apply the file:
+```bash
+kubectl apply -f clusterissuer-root-ca.yaml
+```
+Validate:
+```bash
+kubectl describe clusterissuer industrie4-root-ca
+```
