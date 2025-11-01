@@ -1,4 +1,4 @@
-# OAuth2-Proxy 
+# OAuth2-Proxy Authentication Proxy
 OAuth2 Proxy is a lightweight authentication proxy that sits in front of web applications and enforces access control using OAuth2 or OpenID Connect (OIDC) identity providers. It acts as a gatekeeper: users must authenticate via a trusted provider (e.g., Keycloak) before gaining access to the protected service.
 
 Link docs: https://oauth2-proxy.github.io/oauth2-proxy/
