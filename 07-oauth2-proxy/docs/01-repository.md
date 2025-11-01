@@ -100,6 +100,7 @@ Key Sections Explained:
 - upstreams: Targets the internal Kubernetes Dashboard service
 - cookie_domains and whitelist_domains: Restrict session scope to your domain
 - ingress: Exposes OAuth2 Proxy via NGINX Ingress on oauth2.iot.keutgens.be
+- use-secret-from-k8s: Will tell the chart will inject it correctly
 
 Later, when Keycloak is configured, you will replace the placeholders with real values and validate the authentication flow.
 
