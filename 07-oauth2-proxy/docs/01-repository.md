@@ -109,6 +109,26 @@ helm install oauth2-kubedash oauth2-proxy/oauth2-proxy \
   -n kubernetes-dashboard \
   -f oauth2-kubedash-values.yaml
 ```
+> 🔒 Error: INSTALLATION FAILED: 1 error occurred:
+> admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "kubedash.iot.keutgens.be" and path "/" is already defined in ingress kubernetes-dashboard/kubernetes-dashboard-ingress
+
+Because kubernetes-dashboard was already installed with an ingress, we have to remove it first and let traffic pass oauth2-proxy to the dashboard. So we will delete the dashboard ingress en then run the helm install above again.
+
+Find the correct ingress:
+```bash
+kubectl get ingress -n kubernetes-dashboard
+```
+You will get something like this:
+```bash
+kubernetes-dashboard-ingress   nginx   kubedash.iot.keutgens.be   192.168.50.210   80, 443   48d
+```
+Delete the ingress:
+```bash
+kubectl delete ingress kubernetes-dashboard-ingress -n kubernetes-dashboard
+```
+This will remove only the ingress, not the complete dashboard.
+Now appy the Helm install again from above.
+
 
 ---
 
