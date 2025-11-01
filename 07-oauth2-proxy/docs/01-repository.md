@@ -40,11 +40,15 @@ metadata:
   namespace: default
 type: Opaque
 stringData:
-  clientID: "<your-client-id>"
-  clientSecret: "<your-client-secret>"
-  cookieSecret: "<your-cookie-secret>"
+  clientID: "placeholder for Keycloak ID"
+  clientSecret: "placeholder for Keycloak secret"
+  cookieSecret: "place for created cookie secret above"
 ```
 Apply it with:
 ```bash
 kubectl apply -f oauth2-secret.yaml
 ```
+This secret will be referenced in the Helm chart configuration to inject credentials securely into the OAuth2 Proxy container.
+
+---
+
