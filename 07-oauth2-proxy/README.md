@@ -1,9 +1,10 @@
 # OAuth2-Proxy Authentication Proxy
 OAuth2 Proxy is a lightweight authentication proxy that sits in front of web applications and enforces access control using OAuth2 or OpenID Connect (OIDC) identity providers. It acts as a gatekeeper: users must authenticate via a trusted provider (e.g., Keycloak) before gaining access to the protected service.
 
-Link docs: https://oauth2-proxy.github.io/oauth2-proxy/
-Link Github: https://github.com/oauth2-proxy/oauth2-proxy
-Link Helm Manifests: https://github.com/oauth2-proxy/manifests
+Links:
+- Docs: https://oauth2-proxy.github.io/oauth2-proxy/
+- Github: https://github.com/oauth2-proxy/oauth2-proxy
+- Helm Manifests: https://github.com/oauth2-proxy/manifests
 
 ## Why OAuth2 Proxy?
 Most Kubernetes-native services—like `Kubernetes Dashboard` do not natively support external identity providers such as Keycloak. OAuth2 Proxy bridges this gap by:
