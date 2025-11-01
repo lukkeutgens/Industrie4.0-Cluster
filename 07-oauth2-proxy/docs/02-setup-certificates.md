@@ -125,5 +125,5 @@ And then apply that file.
 
 Do this for all existing certificates that already exist.
 
-
+Restart the pods for that service.
 
