@@ -121,6 +121,9 @@ spec:
   dnsNames:
     - keycloak.iot.keutgens.be
 ```
+And then apply that file.
+
+Do this for all existing certificates that already exist.
 
 
 
