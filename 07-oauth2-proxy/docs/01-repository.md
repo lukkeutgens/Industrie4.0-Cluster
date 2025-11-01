@@ -53,3 +53,55 @@ This secret will be referenced in the Helm chart configuration to inject credent
 
 ---
 
+## 3. Create values.yaml for OAuth2 Proxy
+The values.yaml file defines how OAuth2 Proxy will behave inside your cluster. It includes configuration for the identity provider (Keycloak), upstream service (Kubernetes Dashboard), cookie settings, and Ingress routing. We will use a single configuration (values.yaml) for each service we want to link up like `Kubernetes-Dashboard` and install it in that namespace.
+
+> 🔒 At this stage, Keycloak is not yet configured. We use placeholder values for clientID and clientSecret, which will be updated later.
+
+Create the file:
+```bash
+vi oauth2-dashboard-values.yaml
+```
+Add the content:
+```yaml
+config:
+  existingSecret: oauth2-proxy-secret
+  configFile: |
+    provider = "oidc"
+    oidc_issuer_url = "https://keycloak.iot.keutgens.be/realms/iot"
+    client_id = "placeholder-client-id"
+    client_secret = "placeholder-client-secret"
+    cookie_secret = "use-secret-from-k8s"
+    email_domains = [ "*" ]
+    whitelist_domains = [ "iot.keutgens.be" ]
+    upstreams = [ "http://kubernetes-dashboard.kube-system.svc.cluster.local:80" ]
+    scope = "openid profile email"
+    cookie_secure = false
+    cookie_samesite = "lax"
+    cookie_domains = [ "iot.keutgens.be" ]
+    pass_access_token = true
+    set_authorization_header = true
+    set_xauthrequest = true
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  hosts:
+    - oauth2.iot.keutgens.be
+  tls:
+    - hosts:
+        - oauth2.iot.keutgens.be
+      secretName: oauth2-proxy-cert
+```
+Key Sections Explained:
+- config.existingSecret: References the Kubernetes secret created in Step 2
+- oidc_issuer_url: Points to your Keycloak realm (placeholder for now)
+- upstreams: Targets the internal Kubernetes Dashboard service
+- cookie_domains and whitelist_domains: Restrict session scope to your domain
+- ingress: Exposes OAuth2 Proxy via NGINX Ingress on oauth2.iot.keutgens.be
+
+Later, when Keycloak is configured, you will replace the placeholders with real values and validate the authentication flow.
+
+
+
