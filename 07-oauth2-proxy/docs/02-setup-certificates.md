@@ -1,7 +1,7 @@
 # TLS Trust Chain Setup via cert-manager
 We are using cert-manager for managing certificates for our cluster. These are **self-signed**. OAuth2-Proxy needs to trust these certificates so we need to add the root CA to it.
 
-## Check the managed certificates
+## 1. Check the managed certificates
 First let's check what cert-manager has at this moment:
 ```bash
 kubectl get certificates --all-namespaces
@@ -17,7 +17,7 @@ longhorn-system        longhorn-tls    False   longhorn-tls   47d
 In my case like above, we are missing the root CA certificate. Basically, all certificates are single-self-signed and therefore services will not thrust other services.
 Let's fix this by making a root CA certificate and sign all service certificates with it.
 
-## Create root CA certificate
+## 2. Create root CA certificate
 Generate certificate witch CN = Industrie4.0 Root CA for iot.keutgens.be:
 ```bash
 openssl req -x509 -newkey rsa:4096 \
@@ -30,7 +30,7 @@ This will create two CA-certificate files:
 - root-ca.crt
 - root-ca.key
 
-## Create a Kubernetes secret:
+## 3. Create a Kubernetes secret:
 ```bash
 vi root-ca-secret.yaml
 ```
@@ -60,7 +60,7 @@ will extend in multiple lines
 ```
 So make sure "tls.key" has still a "tab" for the correct yaml format.
 
-## Create ClusterIssuer
+## 4. Create ClusterIssuer
 Now create the cluster certificate issuer for our root-CA:
 ```bash
 vi clusterissuer-root-ca.yaml
@@ -83,3 +83,44 @@ Validate:
 ```bash
 kubectl describe clusterissuer industrie4-root-ca
 ```
+
+---
+
+## 5. Adjust the existing certificates
+In the existing self-signed cert yaml files will be something like this:
+```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-cert
+  namespace: keycloak
+spec:
+  secretName: keycloak-tls
+  issuerRef:
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer
+  commonName: keycloak.iot.keutgens.be
+  dnsNames:
+    - keycloak.iot.keutgens.be
+  duration: 8760h
+  renewBefore: 360h
+```
+Replace these like below:
+```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-cert
+  namespace: keycloak
+spec:
+  secretName: keycloak-tls
+  issuerRef:
+    name: industrie4-root-ca
+    kind: ClusterIssuer
+  commonName: keycloak.iot.keutgens.be
+  dnsNames:
+    - keycloak.iot.keutgens.be
+```
+
+
+
