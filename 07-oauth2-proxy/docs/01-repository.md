@@ -44,7 +44,6 @@ stringData:
   clientSecret: "placeholder for Keycloak secret"
   cookieSecret: "cookieSecret created above"
 ```
-WDErcG5RVm1kZkxvQS9ub09SZVpuUVZ4Q3FYU1RISi8=
 
 Apply it with:
 ```bash
