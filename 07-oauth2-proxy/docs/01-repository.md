@@ -12,6 +12,63 @@ This makes the latest version of the oauth2-proxy chart available for installati
 
 ---
 
+## 2. Edit the coredns deployment
+Export the current dns settings to a file:
+```bash
+kubectl -n kube-system get configmap coredns -o yaml > coredns-patched.yaml
+```
+Edit the file
+```bash
+vi coredns-patched-yaml
+```
+Add the hosts to this file:
+```yaml
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        hosts {
+          192.168.50.210 keycloak.iot.keutgens.be
+          192.168.50.210 longhorn.iot.keutgens.be
+          192.168.50.210 kubedash.iot.keutgens.be
+        }
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        cache 30 {
+           disable success cluster.local
+           disable denial cluster.local
+        }
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-08-31T15:40:11Z"
+  name: coredns
+  namespace: kube-system
+  resourceVersion: "225"
+  uid: f64d8bf1-f8b7-4534-acf9-1bab0dbb0534
+```
+Apply the patched dns:
+```bash
+kubectl apply -f coredns-patched.yaml
+```
+The DNS service is not patched to find the domain names.
+---
+
 ## 2. Create Secrets for OAuth2 Proxy
 OAuth2 Proxy requires sensitive credentials to authenticate users via an identity provider (e.g., Keycloak). These credentials must be securely stored in Kubernetes as a Secret, which the Helm chart can reference during deployment.
 
