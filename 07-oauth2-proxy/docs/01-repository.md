@@ -141,6 +141,7 @@ If yes, we need first to delete this one:
 helm uninstall oauth2-kubedash -n kubernetes-dashboard
 ```
 
+Now run the Helm installer again.
 
 
 ---
