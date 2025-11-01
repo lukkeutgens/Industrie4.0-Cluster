@@ -46,7 +46,7 @@ data:
   tls.crt: <base64 gecodeerde root-ca.crt>
   tls.key: <base64 gecodeerde root-ca.key>
 ```
-For the data, use the following commands to generate the base64 values, use a second terminal for easy copy-pasting.
+To fill in the <base64> data, we need to generate it from the CA certificate files we created earlier. Use the following commands to get the large base64 decoded strings.
 ```bash
 base64 -w0 root-ca.crt  # voor tls.crt
 base64 -w0 root-ca.key  # voor tls.key
