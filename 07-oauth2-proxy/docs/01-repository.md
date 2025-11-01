@@ -85,11 +85,11 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: "nginx"
   hosts:
-    - oauth2.iot.keutgens.be
+    - kubedash.iot.keutgens.be
   tls:
     - hosts:
-        - oauth2.iot.keutgens.be
-      secretName: oauth2-proxy-cert
+        - kubedash.iot.keutgens.be
+      secretName: kubedash-cert
 ```
 Key Sections Explained:
 - config.existingSecret: References the Kubernetes secret created in Step 2
