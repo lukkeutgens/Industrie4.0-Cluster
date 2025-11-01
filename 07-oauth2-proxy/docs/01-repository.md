@@ -126,8 +126,21 @@ Delete the ingress:
 ```bash
 kubectl delete ingress kubernetes-dashboard-ingress -n kubernetes-dashboard
 ```
-This will remove only the ingress, not the complete dashboard.
-Now appy the Helm install again from above.
+Now check the previous install if it is there:
+```bash
+helm list -n kubernetes-dashboard
+```
+Check if you see the `oauth2-kubedash` in this list:
+```bash
+NAME                    NAMESPACE               REVISION        UPDATED                                 STATUS          CHART                              APP VERSION
+kubernetes-dashboard    kubernetes-dashboard    10              2025-10-26 17:13:54.594280094 +0100 CET deployed        kubernetes-dashboard-7.13.0
+oauth2-kubedash         kubernetes-dashboard    1               2025-11-01 11:08:19.490458875 +0100 CET failed          oauth2-proxy-8.3.2                 7.12.0
+```
+If yes, we need first to delete this one:
+```bash
+helm uninstall oauth2-kubedash -n kubernetes-dashboard
+```
+
 
 
 ---
