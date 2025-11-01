@@ -28,6 +28,14 @@ The Kubernetes Dashboard does not support OIDC out of the box. By placing OAuth2
 
 This setup enables centralized identity management across multiple services in the cluster, using Keycloak as the single source of truth.
 
+## Installation
+1. **Add the Helm repository**: We use the official Helm chart.
+2. **Generate Secrets**: Prepare Kubernetes secret
+3. **Create custom values.yaml: Defining the OAuth2 Proxy settings/
+4. **Install OAuth2 Proxy via Helm: Deploy the chart with the custom values
+5. **Update the ingress for used services: We will update first Kubernetes Dashboard
+6. **Configure Keycloak Integration**: Will be done in the Keycloak chapter.
+
 ## Folder Content
 ```text
 
