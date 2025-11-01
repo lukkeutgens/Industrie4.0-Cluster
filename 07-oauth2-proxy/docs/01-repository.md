@@ -101,6 +101,8 @@ Key Sections Explained:
 
 Later, when Keycloak is configured, you will replace the placeholders with real values and validate the authentication flow.
 
+---
+
 ## 4. Install the Helm Chart with the values in Kubernetes-Dashboard namespace:
 ```bash
 helm install oauth2-kubedash oauth2-proxy/oauth2-proxy \
