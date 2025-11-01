@@ -28,3 +28,8 @@ The Kubernetes Dashboard does not support OIDC out of the box. By placing OAuth2
 
 This setup enables centralized identity management across multiple services in the cluster, using Keycloak as the single source of truth.
 
+## Folder Content
+```text
+
+```
+
