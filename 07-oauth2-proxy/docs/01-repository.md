@@ -29,25 +29,25 @@ The cookieSecret must be a base64-encoded 32-byte string. You can generate one u
 ### Create the Kubernetes Secret
 Create the secret file:
 ```bash
-vi oauth2-secret.yaml
+vi oauth2-kubedash-secret.yaml
 ```
 Add the content:
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: oauth2-proxy-secret
-  namespace: default
+  name: oauth2-kubedash-secret
+  namespace: kubernetes-dashboard
 type: Opaque
 stringData:
   clientID: "placeholder for Keycloak ID"
   clientSecret: "placeholder for Keycloak secret"
-  cookieSecret: "cookieSecret created above"
+  cookieSecret: "generated cookieSecret"
 ```
 
 Apply it with:
 ```bash
-kubectl apply -f oauth2-secret.yaml
+kubectl apply -f oauth2-kubedash-secret.yaml
 ```
 This secret will be referenced in the Helm chart configuration to inject credentials securely into the OAuth2 Proxy container.
 
