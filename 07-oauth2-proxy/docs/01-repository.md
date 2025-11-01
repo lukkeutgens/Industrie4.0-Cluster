@@ -65,7 +65,7 @@ vi oauth2-dashboard-values.yaml
 Add the content:
 ```yaml
 config:
-  existingSecret: oauth2-proxy-secret
+  existingSecret: oauth2-kubedash-secret
   configFile: |
     provider = "oidc"
     oidc_issuer_url = "https://keycloak.iot.keutgens.be/realms/iot"
