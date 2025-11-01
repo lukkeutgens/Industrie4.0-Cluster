@@ -69,9 +69,6 @@ config:
   configFile: |
     provider = "oidc"
     oidc_issuer_url = "https://keycloak.iot.keutgens.be/realms/iot"
-    client_id = "use-from-secret"
-    client_secret = "use-from-secret"
-    cookie_secret = "use-from-secret"
     email_domains = [ "*" ]
     whitelist_domains = [ "iot.keutgens.be" ]
     upstreams = [ "http://kubernetes-dashboard.kube-system.svc.cluster.local:80" ]
