@@ -51,4 +51,27 @@ To fill in the <base64> data, we need to generate it from the CA certificate fil
 base64 -w0 root-ca.crt  # voor tls.crt
 base64 -w0 root-ca.key  # voor tls.key
 ```
+Be aware after pasting the code that the tab position for the next line is still correct
+```yaml
+data:
+  tls.crt: your very long decoded base 64 string
+will extend in multiple lines
+  tls.key: <base64 gecodeerde root-ca.key>
+```
+So make sure "tls.key" has still a "tab" for the correct yaml format.
 
+## Create ClusterIssuer
+Now create the cluster certificate issuer for our root-CA:
+```bash
+vi clusterissuer-root-ca.yaml
+```
+Content:
+```yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: industrie4-root-ca
+spec:
+  ca:
+    secretName: root-ca-secret
+```
