@@ -67,9 +67,10 @@ Apply the patched dns:
 kubectl apply -f coredns-patched.yaml
 ```
 The DNS service is not patched to find the domain names.
+
 ---
 
-## 2. Create Secrets for OAuth2 Proxy
+## 3. Create Secrets for OAuth2 Proxy
 OAuth2 Proxy requires sensitive credentials to authenticate users via an identity provider (e.g., Keycloak). These credentials must be securely stored in Kubernetes as a Secret, which the Helm chart can reference during deployment.
 
 ### Required Secrets
