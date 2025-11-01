@@ -60,7 +60,7 @@ The values.yaml file defines how OAuth2 Proxy will behave inside your cluster. I
 
 Create the file:
 ```bash
-vi oauth2-dashboard-values.yaml
+vi oauth2-kubedash-values.yaml
 ```
 Add the content:
 ```yaml
