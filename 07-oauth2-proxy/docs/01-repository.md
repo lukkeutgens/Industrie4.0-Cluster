@@ -42,8 +42,10 @@ type: Opaque
 stringData:
   clientID: "placeholder for Keycloak ID"
   clientSecret: "placeholder for Keycloak secret"
-  cookieSecret: "place for created cookie secret above"
+  cookieSecret: "cookieSecret created above"
 ```
+WDErcG5RVm1kZkxvQS9ub09SZVpuUVZ4Q3FYU1RISi8=
+
 Apply it with:
 ```bash
 kubectl apply -f oauth2-secret.yaml
