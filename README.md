@@ -7,7 +7,8 @@
 
 > I'm keeping this repository as a reference — a snapshot of lessons learned that I may revisit in the future.
 
-It’s not a production setup — it’s a learning lab. A place to test ideas, break things safely, and understand what works (and what doesn’t).
+Not built for production — built for learning.
+A space to experiment, break things safely (until I broke too much), and figure out what works — and what doesn’t.
 
 ## Learning Goals of This Project
 - Understand open-source ecosystems: Explore what’s available, how it works, and how it can be combined to build resilient industrial platforms.
