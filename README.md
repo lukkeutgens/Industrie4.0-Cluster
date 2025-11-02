@@ -7,8 +7,6 @@
 
 > I'm keeping this repository as a reference — a snapshot of lessons learned that I may revisit in the future.
 
-After 20+ years as a PLC and SCADA programmer in industrial automation (Siemens, Beckhoff, Omron), I’m now shifting focus. Rather than continuing in pure PLC programming, I’m preparing for roles that bridge Operational Technology (OT) and Information Technology (IT). This project is part of that transition — a way to learn, experiment, and document how modern infrastructure (Linux, Kubernetes, containers) can support industrial environments in a scalable, secure, and maintainable way.
-
 It’s not a production setup — it’s a learning lab. A place to test ideas, break things safely, and understand what works (and what doesn’t).
 
 ## Learning Goals of This Project
