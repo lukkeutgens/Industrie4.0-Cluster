@@ -1,6 +1,7 @@
 # Industry 4.0 Cluster on Debian + Kubernetes
 > ⚠️ ***** THIS PROJECT IS STOPPED! *****
-> I used Oracle VirtualBox on my Windows 11 laptop which uses Hyper-V for RAM security and that made the VM's give a lot of CPU softlocks. To improve the stability I removed at one point all snapshots. And, when learning, you brake things. That's what happened. I have learned what I wanted about Kubernetes, so for me there is no point on going further with it. I will start a new project to learn more, but then also for use at home.** 
+> I used Oracle VirtualBox on my Windows 11 laptop which uses Hyper-V for RAM security and that made the VM's give a lot of CPU softlocks. To improve the stability I removed at one point all snapshots. And, when learning, you brake things. That's what happened. I have learned what I wanted about Kubernetes, so for me there is no point on going further with it. I will start a new project to learn more, but then also for use at home.
+> I am keeping this project for now, so I can loopup the things I learned should I need it.
 
 After 20+ years as a PLC and SCADA programmer in industrial automation (Siemens, Beckhoff, Omron), I’m now shifting focus. Rather than continuing in pure PLC programming, I’m preparing for roles that bridge Operational Technology (OT) and Information Technology (IT). This project is part of that transition — a way to learn, experiment, and document how modern infrastructure (Linux, Kubernetes, containers) can support industrial environments in a scalable, secure, and maintainable way.
 
