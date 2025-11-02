@@ -4,6 +4,7 @@
  
 > It was originally built using Oracle VirtualBox on a Windows 11 laptop with Hyper-V enabled for memory integrity. Unfortunately, this caused frequent CPU soft lockups in the VMs. In an attempt to stabilize the setup, I removed all snapshots — and as often happens when learning, things broke.
 > That said, the goal was to explore Kubernetes, and I’ve achieved what I set out to learn. Continuing this project no longer adds value for me, especially since I’m shifting focus toward a new homelab setup tailored for real-world use at home.
+
 > I'm keeping this repository as a reference — a snapshot of lessons learned that I may revisit in the future.
 
 After 20+ years as a PLC and SCADA programmer in industrial automation (Siemens, Beckhoff, Omron), I’m now shifting focus. Rather than continuing in pure PLC programming, I’m preparing for roles that bridge Operational Technology (OT) and Information Technology (IT). This project is part of that transition — a way to learn, experiment, and document how modern infrastructure (Linux, Kubernetes, containers) can support industrial environments in a scalable, secure, and maintainable way.
