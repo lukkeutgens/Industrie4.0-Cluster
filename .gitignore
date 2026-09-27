@@ -1,0 +1,13 @@
+# Obsidian
+/.obsidian/
+
+# MarkText & Editor bestanden
+.marktext/
+
+# Windows systeem-bestanden
+Thumbs.db
+Desktop.ini
+
+# Eventuele tijdelijke OS X / Synology bestanden
+.DS_Store
+@eaDir/
